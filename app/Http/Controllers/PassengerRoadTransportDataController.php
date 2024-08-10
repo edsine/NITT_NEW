@@ -44,4 +44,22 @@ class PassengerRoadTransportDataController extends Controller
 
 
 
+        public function loadGraphPage(){
+
+            $PassengerRoadTransportData_data = PassengerRoadTransportData::all();
+        
+            $labels = [];
+            $data = [];
+        
+            foreach ( $PassengerRoadTransportData_data as $value){
+                $labels[] = $value[''];
+                $data[] = $value[''];
+            }
+        
+            return view('graphPage')
+            ->with('labels', $labels)
+            ->with('data', $data);
+        }
+
+
 }

@@ -44,4 +44,22 @@ class RailwayRollingStockController extends Controller
 
 
 
+        public function loadGraphPage(){
+
+            $RailwayRollingStock_data = RailwayRollingStock::all();
+        
+            $labels = [];
+            $data = [];
+        
+            foreach ( $RailwayRollingStock_data as $value){
+                $labels[] = $value[''];
+                $data[] = $value[''];
+            }
+        
+            return view('graphPage')
+            ->with('labels', $labels)
+            ->with('data', $data);
+        }
+
+
 }

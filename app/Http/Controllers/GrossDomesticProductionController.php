@@ -41,7 +41,22 @@ class GrossDomesticProductionController extends Controller
         }
 
 
+        public function loadGraphPage(){
 
+            $GrossDomesticProduct_data = GrossDomesticProduct::all();
+        
+            $labels = [];
+            $data = [];
+        
+            foreach ( $GrossDomesticProduct_data as $value){
+                $labels[] = $value[''];
+                $data[] = $value[''];
+            }
+        
+            return view('graphPage')
+            ->with('labels', $labels)
+            ->with('data', $data);
+        }
 
 
 

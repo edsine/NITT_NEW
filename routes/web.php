@@ -94,6 +94,8 @@ Route::get('records', [VehicleImportationController::class, 'records'])->name('r
 Route::post('vehicleImportation', [VehicleImportationController::class, 'store'])->name('vehicleImportation.store');
 Route::put('vehicleImportation/{id}', [VehicleImportationController::class, 'update'])->name('vehicleImportation.update');
 Route::delete('vehicleImportation/{id}', [VehicleImportationController::class, 'destroy'])->name('vehicleImportation.destroy');
+Route::get('/vehicleImportation/{id}/data', [VehicleImportationController::class, 'getData'])->name('vehicleImportation.data');
+
 
 //ROAD PASSENGER
 Route::get('passengers', [PassengerRoadTransportDataController::class, 'passengers'])->name('passengers');
@@ -197,6 +199,9 @@ Route::delete('shipContainerTraffic/{id}', [ShipContainerTrafficController::clas
 //Route::get('/vehicleImportation/edit/{id}', [VehicleImportationController::class, 'edit'])->name('vehicleImportation.edit');
 //Route::post('/vehicleImportation/update/{id}', [VehicleImportationController::class, 'update'])->name('vehicleImportation.update');
 //Route::delete('/vehicleImportation/destroy/{id}', [VehicleImportationController::class, 'destroy'])->name('vehicleImportation.destroy');
+
+
+Route::get('/graph', [VehicleImportationController::class, 'loadGraphPage'])->name('graphPage');
 
 
 

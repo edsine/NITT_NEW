@@ -45,5 +45,24 @@ class MaritimeAcademyController extends Controller
 
 
 
+        public function loadGraphPage(){
+
+            $MaritimeAcademy_data = MaritimeAcademy::all();
+        
+            $labels = [];
+            $data = [];
+        
+            foreach ( $MaritimeAcademy_data as $value){
+                $labels[] = $value[''];
+                $data[] = $value[''];
+            }
+        
+            return view('graphPage')
+            ->with('labels', $labels)
+            ->with('data', $data);
+        }
+
+
+
 
 }

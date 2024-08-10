@@ -11,6 +11,7 @@
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
@@ -22,6 +23,9 @@
 <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.bootstrap4.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 
 
@@ -50,6 +54,7 @@
                 <td>
                     <button class="btn btn-warning btn-sm edit-record" data-id="{{ $record->id }}" data-toggle="modal" data-target="#editModal" data-record="{{ $record }}">Edit</button>
                     <button class="btn btn-danger btn-sm delete-record" data-id="{{ $record->id }}" data-toggle="modal" data-target="#deleteModal" data-record="{{ $record }}">Delete</button>
+                    <button class="btn btn-info btn-sm view-chart" data-id="{{ $record->id }}" data-toggle="modal" data-target="#chartModal" data-record="{{ $record }}">View Chart</button> 
                 </td>
             </tr>
             @endforeach
@@ -163,7 +168,32 @@
 </div>
 
 
+
+<!-- Chart Modal -->
+<div class="modal fade" id="chartModal" tabindex="-1" role="dialog" aria-labelledby="chartModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="chartModalLabel">Vehicle Count Chart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <canvas id="vehicleChart"></canvas>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <script>
+
+    
     $(document).ready(function() {
         $('#vehicles-table').DataTable();
 
@@ -190,7 +220,56 @@
             $('#deleteForm').attr('action', '/vehicleImportation/' + record.id);
             $('#deleteModal').modal('show');
         });
+
+
+        // Chart instance variable
+        var vehicleChart = null;
+
+        // Handle View Chart button click
+        $('.view-chart').on('click', function() {
+            var recordId = $(this).data('id');
+            $.ajax({
+                url: '/vehicleImportation/' + recordId + '/data',
+                method: 'GET',
+                success: function(data) {
+                    var ctx = document.getElementById('vehicleChart').getContext('2d');
+                    
+                    // Destroy existing chart if it exists
+                    if (vehicleChart) {
+                        vehicleChart.destroy();
+                    }
+
+                    // Create the chart
+                    vehicleChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['New Vehicles', 'Used Vehicles'],
+                            datasets: [{
+                                label: 'Vehicle Counts',
+                                data: [data.new_vehicle_count, data.used_vehicle_count],
+                                backgroundColor: ['#36a2eb', '#ff6384']
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                    
+                    // Show the modal
+                    $('#chartModal').modal('show');
+                },
+                error: function() {
+                    alert('Error fetching data');
+                }
+            });
+        });
     });
+
+  
 </script>
 
 

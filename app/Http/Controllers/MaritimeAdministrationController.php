@@ -41,6 +41,23 @@ class MaritimeAdministrationController extends Controller
         }
 
 
+        
+        public function loadGraphPage(){
+
+            $MaritimeAdministration_data = MaritimeAdministration::all();
+        
+            $labels = [];
+            $data = [];
+        
+            foreach ( $MaritimeAdministration_data as $value){
+                $labels[] = $value[''];
+                $data[] = $value[''];
+            }
+        
+            return view('graphPage')
+            ->with('labels', $labels)
+            ->with('data', $data);
+        }
 
 
 

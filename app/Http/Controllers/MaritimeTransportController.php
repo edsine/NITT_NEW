@@ -43,4 +43,23 @@ class MaritimeTransportController extends Controller
         }
 
 
+
+        
+        public function loadGraphPage(){
+
+            $MaritimeTransport_data = MaritimeTransport::all();
+        
+            $labels = [];
+            $data = [];
+        
+            foreach ( $MaritimeTransport_data as $value){
+                $labels[] = $value[''];
+                $data[] = $value[''];
+            }
+        
+            return view('graphPage')
+            ->with('labels', $labels)
+            ->with('data', $data);
+        }
+
 }

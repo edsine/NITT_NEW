@@ -44,5 +44,23 @@ class AirTrafficDataController extends Controller
 
 
 
+        public function loadGraphPage(){
+
+            $AirPassengersTraffic_data = AirPassengersTraffic::all();
+        
+            $labels = [];
+            $data = [];
+        
+            foreach ( $AirPassengersTraffic_data as $value){
+                $labels[] = $value[''];
+                $data[] = $value[''];
+            }
+        
+            return view('graphPage')
+            ->with('labels', $labels)
+            ->with('data', $data);
+        }
+
+
 
 }

@@ -43,4 +43,23 @@ class FreightRoadTransportDataController extends Controller
 
 
 
+        public function loadGraphPage(){
+
+            $FreightRoadTransportData_data = FreightRoadTransportData::all();
+        
+            $labels = [];
+            $data = [];
+        
+            foreach ( $FreightRoadTransportData_data as $value){
+                $labels[] = $value[''];
+                $data[] = $value[''];
+            }
+        
+            return view('graphPage')
+            ->with('labels', $labels)
+            ->with('data', $data);
+        }
+
+
+
 }

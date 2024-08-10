@@ -12,15 +12,8 @@ use illuminate\Http\RedirectResponse;
 
 class VehicleImportationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-     
-      
-      
+   
+        
       function records(){
 
       $records = VehicleImportation::all();
@@ -35,87 +28,7 @@ class VehicleImportationController extends Controller
       
       
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-   // public function store(Request $request)
-   // {
-        //
-   // }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    //public function update(Request $request, $id)
-   // {
-        //
-   // }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-   // public function destroy($id)
-   // {
-        //
-   // }
-
-
-
-
-
-
-
-
-
-
-
-//public function records()
-//{
- //   $records = VehicleImportation::all();
- //   return view('vehicleImportation', ['records' => $records]);
-//}
 
 public function store(Request $request)
 {
@@ -135,6 +48,38 @@ public function destroy($id)
     VehicleImportation::destroy($id);
     return redirect()->route('records');
 }
+
+public function loadGraphPage()
+{
+    $vehicleImportation_data = VehicleImportation::selectRaw('vehicle_category, SUM(new_vehicle_count) as new_count, SUM(used_vehicle_count) as used_count')
+        ->groupBy('vehicle_category')
+        ->get();
+
+    $labels = $vehicleImportation_data->pluck('vehicle_category');
+    $data = $vehicleImportation_data->map(function($item) {
+        return $item->new_count + $item->used_count;
+    });
+
+    return view('graphPage', compact('labels', 'data'));
+}
+
+
+public function getData($id)
+{
+    $record = VehicleImportation::find($id);
+    
+    if ($record) {
+        return response()->json([
+            'year' => $record->year, 
+            'vehicle_category' => $record->vehicle_category,
+            'new_vehicle_count' => $record->new_vehicle_count,
+            'used_vehicle_count' => $record->used_vehicle_count
+        ]);
+    }
+    
+    return response()->json(['error' => 'Record not found'], 404);
+}
+
 
 
 }
