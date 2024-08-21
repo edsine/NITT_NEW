@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FreightRoadTransportData;
+use App\Imports\FreightRoadTransportDataImport;
+use App\Exports\FreightRoadTransportDataExport;
 
 class FreightRoadTransportDataController extends Controller
 {
@@ -60,6 +62,19 @@ class FreightRoadTransportDataController extends Controller
             ->with('data', $data);
         }
 
+
+
+
+        public function import(Request $request)
+        {
+            Excel::import(new FreightRoadTransportDataImport, $request->file('file')->store('temp'));
+            return back()->with('success', 'FreightRoadTransportData imported successfully.');
+        }
+        
+        public function export()
+        {
+            return Excel::download(new FreightRoadTransportDataExport, 'FreightRoadTransportData.xlsx');
+        }
 
 
 }

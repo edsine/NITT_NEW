@@ -9,6 +9,9 @@
 @section('content')
 
 
+
+
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 
 
@@ -30,16 +33,57 @@
 
 
 <div class="container mt-2">
+    @if(session('success'))
+        <div>{{ session('success') }}</div>
+    @endif
     
-    <button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button>
+    
+
+    <div class="d-flex">
+        <div class="mr-auto p-2">
+            <div class="d-flex justify-content-start">
+                <button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="d-flex justify-content-end">
+                <form id="importForm" action="{{ route('VehicleImportation.import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" id="fileInput">
+                    <button type="submit" class="btn btn-secondary mr-2">Import</button>
+                </form>
+    
+                <button type="button" class="btn btn-secondary">
+                    <a href="{{ route('VehicleImportation.export') }}" style="color:white; text-decoration:none;">Export</a>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('importForm').addEventListener('submit', function(event) {
+            const fileInput = document.getElementById('fileInput');
+            
+            if (!fileInput.value) {
+                event.preventDefault(); // Prevent form submission
+                alert('Please select a file before importing.');
+            }
+        });
+    </script>
+    
+
+
+
+
+    
     <table id="vehicles-table" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Year</th>
-                <th>Vehicle Category</th>
-                <th>New Vehicle Count</th>
-                <th>Used Vehicle Count</th>
+                <th>Govt Motor Vehicle</th>
+                <th>Govt Articulated</th>
+                <th>Private Motor Vehicle</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -243,7 +287,7 @@
                     vehicleChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['New Vehicles', 'Used Vehicles'],
+                            labels: ['Govt Vehicles', 'Private Vehicles'],
                             datasets: [{
                                 label: 'Vehicle Counts',
                                 data: [data.new_vehicle_count, data.used_vehicle_count],
@@ -271,6 +315,8 @@
 
   
 </script>
+
+
 
 
 

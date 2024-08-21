@@ -323,14 +323,14 @@ return [
             'label_color' => 'success',
         ],
         [
-            'text' => 'Vehicle Importation',
+            'text' => 'Vehicle Production',
             'url' => '/records',
             'icon' => 'nav-icon fas fa-th',
            // 'label' => 4,
             'label_color' => 'success',
         ],
         [
-            'text' => 'Road Transport',
+            'text' => 'Road Mode Data',
             'icon' => 'nav-icon fas fa-th',
             'submenu' => [
                 [
@@ -345,7 +345,7 @@ return [
             ],
         ],
         [
-            'text' => 'Air Transport Data',
+            'text' => 'Air Mode Data',
             'icon' => 'nav-icon fas fa-th',
             'submenu' => [
                 [
@@ -359,22 +359,16 @@ return [
                 ],
             ],
         ],
+        
         [
-            'text' => 'Railways Passenger/Freight',
-            'url' => '/railwayPassenger',
-            'icon' => 'nav-icon fas fa-th',
-           // 'label' => 4,
-            'label_color' => 'success',
-        ],
-        [
-            'text' => 'Rolling Stock',
+            'text' => 'Rail Mode Data',
             'url' => '/stocks',
             'icon' => 'nav-icon fas fa-th',
            // 'label' => 4,
             'label_color' => 'success',
         ],
         [
-            'text' => 'Maritime',
+            'text' => 'Maritime Data',
             'icon' => 'nav-icon fas fa-th',
             'submenu' => [
                 [
@@ -393,7 +387,7 @@ return [
             ],
         ],
         [
-            'text' => 'Trains Punctuality',
+            'text' => 'Fleet OPerator Data',
             'url' => '/trains',
             'icon' => 'nav-icon fas fa-th',
            // 'label' => 4,
@@ -413,85 +407,26 @@ return [
           //  'label' => 4,
             'label_color' => 'success',
         ],
-        [
-            'text' => 'Roles',
-            'url' => 'admin/pages',
-            'icon' => 'nav-icon fas fa-th',
-          //  'label' => 4,
-            'label_color' => 'success',
-        ],
+        
+        
+        ['header' => 'ROLES & PERMISSION'],
         [
             'text' => 'Users',
-            'url' => 'admin/pages',
-            'icon' => 'nav-icon fas fa-th',
-          //  'label' => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url' => 'admin/settings',
+            'route' => 'users.index',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url' => 'admin/settings',
+            'text' => 'Roles',
+            'route' => 'users.roles.index',
             'icon' => 'fas fa-fw fa-lock',
         ],
         [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
+            'text' => 'Permissions',
+            'route' => 'users.permissions.index',
+            'icon' => 'fas fa-fw fa-lock',
         ],
-        ['header' => 'labels'],
-        [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
-        ],
+        
+        
     ],
 
     /*

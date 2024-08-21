@@ -32,7 +32,35 @@
 
 <div class="container mt-2">
     
-    <button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button>
+    
+
+<div class="container mt-2">
+    @if(session('success'))
+        <div>{{ session('success') }}</div>
+    @endif
+    
+    
+
+   
+
+
+    <div class="d-flex">
+        <div class="mr-auto p-2"><div class="d-flex justify-content-start"><button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button></div></div>
+        <div class="p-2"> <div class="d-flex justify-content-end"> <form action="{{ route('VehicleImportation.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file">
+
+            <button type="submit" class="btn btn-secondary mr-2">Import</button>
+           
+        </form>
+
+
+        <button type="button" class="btn btn-secondary" ><a href="{{ route('VehicleImportation.export') }}">Export</a></button>
+    
+    </div></div>
+        
+      </div>
+
     <table id="passengers-table" class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -52,16 +80,18 @@
             <tr>
                 <td>{{ $gross->id }}</td>
                 <td>{{ $gross->year }}</td>
-                <td>{{ $gross->number_of_passenger_carried }}</td>
-                <td>{{ $gross->number_vehicle_in_fleet }}</td>
-                <td>{{ $gross->revenue_from_operation }}</td>
-                <td>{{ $gross->number_of_employees }}</td>
-                <td>{{ $gross->annual_cost_of_vehicle_maintenance }}</td>
-                <td>{{ $gross->number_of_accidents }}</td>
-                <td>{{ $gross->number_of_accidents }}</td>
+                <td>{{ $gross->transport_and_storage }}</td>
+                <td>{{ $gross->road_transport }}</td>
+                <td>{{ $gross->rail_transport_and_pipelines }}</td>
+                <td>{{ $gross->water_transport }}</td>
+                <td>{{ $gross->air_transport }}</td>
+                <td>{{ $gross->transport_services }}</td>
+                <td>{{ $gross->post_and_courier_services }}</td>
+                
                 <td>
                     <button class="btn btn-warning btn-sm edit-record" data-id="{{ $gross->id }}" data-toggle="modal" data-target="#editModal" data-record="{{ $gross }}">Edit</button>
                     <button class="btn btn-danger btn-sm delete-record" data-id="{{ $gross->id }}" data-toggle="modal" data-target="#deleteModal" data-record="{{ $gross}}">Delete</button>
+                    <button class="btn btn-info btn-sm view-chart" data-id="{{ $gross->id }}" data-toggle="modal" data-target="#chartModal" data-record="{{ $gross }}">View Chart</button> 
                 </td>
             </tr>
             @endforeach
@@ -87,9 +117,8 @@
                         <input type="text" class="form-control" id="addYear" name="year" required>
                     </div>
                     <div class="form-group">
-                        <label for="addNumberOfPassengers">Number Of
-                          Passengers</label>
-                        <input type="number" class="form-control" id="addNumberOfPassengers" name="number_of_passenger_carried" required>
+                        <label for="addTransportAndStorage">Transport & Storage</label>
+                        <input type="number" class="form-control" id="addTransportAndStorage" name="transport_and_storage" required>
                     </div>
                     <div class="form-group">
                         <label for="addNumberOfVehicles">Number Of Vehicles</label>
@@ -205,29 +234,30 @@
         $('#passengers-table').DataTable();
 
         // Handle Add button click
-        $('#add-passenger').on('click', function() {
+        $('#add-gross').on('click', function() {
             $('#addModal').modal('show');
         });
 
         // Handle Edit button click
-        $('.edit-passenger').on('click', function() {
-            var passenger = $(this).data('passenger');
-            $('#editId').val(passenger.id);
-            $('#editYear').val(passenger.year);
-            $('#editNumberOfPassengers').val(passenger.number_of_passenger_carried);
-            $('#editVehicles').val(passenger.number_of_vehicle_in_fleet);
-            $('#editRevenue').val(passenger.revenue_from_operation);
-            $('#editEmployees').val(passenger.number_of_employees);
-            $('#editCost').val(passenger.annual_cost_of_vehicle_maintenance);
-            $('#editAccidents').val(passenger.number_of_accidents);
-            $('#editForm').attr('action', '/passengerRoad/' + passenger.id);
+        $('.edit-gross').on('click', function() {
+            var passenger = $(this).data('gross');
+            $('#editId').val(gross.id);
+            $('#editYear').val(gross.year);
+            $('#editTransportAndStorage').val(gross.transport_and_storage);
+            $('#editRoadTransport').val(gross.road_transport);
+            $('#editRailTransport').val(gross.rail_transport_and_pipeline);
+            $('#editWaterTransport').val(gross.water_transport);
+            $('#editAirTransport').val(gross.air_transport);
+            $('#editTransportServices').val(gross.transport_services);
+            $('#editPostAndCourier').val(gross.post_and_courier_services);
+            $('#editForm').attr('action', '/grossDomestic/' + gross.id);
             $('#editModal').modal('show');
         });
 
         // Handle Delete button click
-        $('.delete-passenger').on('click', function() {
-            var record = $(this).data('passenger');
-            $('#deleteForm').attr('action', '/passengerRoad/' + passenger.id);
+        $('.delete-gross').on('click', function() {
+            var gross = $(this).data('gross');
+            $('#deleteForm').attr('action', '/grossDomestic/' + gross.id);
             $('#deleteModal').modal('show');
         });
     });

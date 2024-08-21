@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\VehicleImportationController;
@@ -17,6 +18,9 @@ use App\Http\Controllers\TrainPunctualityController;
 use App\Http\Controllers\GrossDomesticProductionController;
 use App\Http\Controllers\ShipContainerTrafficController;
 use App\Http\Controllers\RailwayRollingStockController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\UsersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,8 +33,18 @@ use App\Http\Controllers\RailwayRollingStockController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect()->route('login');
 });
+
+
+
+Route::get('/auth/login', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+
+  
+
+
+
+
 
 Route::get('generator_builder', '\InfyOm\GeneratorBuilder\Controllers\GeneratorBuilderController@builder')->name('io_generator_builder');
 
@@ -74,10 +88,10 @@ Route::get('form', function(){
 
 });
 
-Route::post('store_data', [App\Http\Controllers\VehicleImportationController::class, 'store_data']);
-Route::get('records', [App\Http\Controllers\VehicleImportationController::class, 'records']);
+//Route::post('store_data', [App\Http\Controllers\VehicleImportationController::class, 'store_data']);
+//Route::get('records', [App\Http\Controllers\VehicleImportationController::class, 'records']);
 
-Route::get('vehicleImportation/list', [VehicleImportationController::class, 'getVehicle'])->name('vehicleImportation.list');
+//Route::get('vehicleImportation/list', [VehicleImportationController::class, 'getVehicle'])->name('vehicleImportation.list');
 
 
 //DATATABLE
@@ -203,6 +217,21 @@ Route::delete('shipContainerTraffic/{id}', [ShipContainerTrafficController::clas
 
 Route::get('/graph', [VehicleImportationController::class, 'loadGraphPage'])->name('graphPage');
 
+
+
+Route::get('VehicleImportation/export', [VehicleImportationController::class, 'export'])->name('VehicleImportation.export');
+Route::post('VehicleImportation/import', [VehicleImportationController::class, 'import'])->name('VehicleImportation.import');
+
+
+
+
+
+Route::group(['prefix' => 'users', 'as' => 'users.'], function (){
+    Route::resource('permissions', PermissionController::class);
+    Route::resource('roles', RolesController::class);
+
+});
+Route::resource('users', UsersController::class); 
 
 
 

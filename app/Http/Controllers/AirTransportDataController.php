@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AirTransportData;
+use App\Imports\AirTransportDataImport;
+use App\Exports\AirTransportDataExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AirTransportDataController extends Controller
 {
@@ -58,6 +61,17 @@ class AirTransportDataController extends Controller
             return view('graphPage')
             ->with('labels', $labels)
             ->with('data', $data);
+        }
+
+        public function import(Request $request)
+        {
+            Excel::import(new AirTransportDataImport, $request->file('file')->store('temp'));
+            return back()->with('success', 'AirTransportData imported successfully.');
+        }
+        
+        public function export()
+        {
+            return Excel::download(new AirTransportDataExport, 'AirTransportData.xlsx');
         }
 
 

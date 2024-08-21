@@ -31,7 +31,35 @@
 
 <div class="container mt-2">
     
-    <button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button>
+    
+
+<div class="container mt-2">
+    @if(session('success'))
+        <div>{{ session('success') }}</div>
+    @endif
+    
+    
+
+   
+
+
+    <div class="d-flex">
+        <div class="mr-auto p-2"><div class="d-flex justify-content-start"><button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button></div></div>
+        <div class="p-2"> <div class="d-flex justify-content-end"> <form action="{{ route('VehicleImportation.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file">
+
+            <button type="submit" class="btn btn-secondary mr-2">Import</button>
+           
+        </form>
+
+
+        <button type="button" class="btn btn-secondary" ><a href="{{ route('VehicleImportation.export') }}">Export</a></button>
+    
+    </div></div>
+        
+      </div>
+
     <table id="airTraffic-table" class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -56,6 +84,8 @@
                 <td>
                     <button class="btn btn-warning btn-sm edit-record" data-id="{{ $traffic->id }}" data-toggle="modal" data-target="#editModal" data-record="{{ $traffic}}">Edit</button>
                     <button class="btn btn-danger btn-sm delete-record" data-id="{{ $traffic->id }}" data-toggle="modal" data-target="#deleteModal" data-record="{{ $traffic }}">Delete</button>
+                    <button class="btn btn-info btn-sm view-chart" data-id="{{ $traffic->id }}" data-toggle="modal" data-target="#chartModal" data-record="{{ $traffic }}">View Chart</button> 
+     
                 </td>
             </tr>
             @endforeach
@@ -208,7 +238,6 @@
         });
     });
 </script>
-
 
 
 

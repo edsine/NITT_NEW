@@ -33,7 +33,35 @@
 
 <div class="container mt-2">
     
-    <button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button>
+  
+
+<div class="container mt-2">
+    @if(session('success'))
+        <div>{{ session('success') }}</div>
+    @endif
+    
+    
+
+   
+
+
+    <div class="d-flex">
+        <div class="mr-auto p-2"><div class="d-flex justify-content-start"><button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button></div></div>
+        <div class="p-2"> <div class="d-flex justify-content-end"> <form action="{{ route('VehicleImportation.import') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="file">
+
+            <button type="submit" class="btn btn-secondary mr-2">Import</button>
+           
+        </form>
+
+
+        <button type="button" class="btn btn-secondary" ><a href="{{ route('VehicleImportation.export') }}">Export</a></button>
+    
+    </div></div>
+        
+      </div>
+
     <table id="freights-table" class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -61,6 +89,8 @@
                 <td>
                     <button class="btn btn-warning btn-sm edit-record" data-id="{{ $freight->id }}" data-toggle="modal" data-target="#editModal" data-record="{{ $freight }}">Edit</button>
                     <button class="btn btn-danger btn-sm delete-record" data-id="{{ $freight->id }}" data-toggle="modal" data-target="#deleteModal" data-record="{{ $freight }}">Delete</button>
+                    <button class="btn btn-info btn-sm view-chart" data-id="{{ $freight->id }}" data-toggle="modal" data-target="#chartModal" data-record="{{ $freights }}">View Chart</button> 
+     
                 </td>
             </tr>
             @endforeach
@@ -231,7 +261,6 @@
         });
     });
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></>
 

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AirPassengersTraffic;
+use App\Imports\AirPassengersTrafficImport;
+use App\Exports\AirPassengersTrafficExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class AirTrafficDataController extends Controller
@@ -63,4 +66,22 @@ class AirTrafficDataController extends Controller
 
 
 
+
+        public function import(Request $request)
+{
+    Excel::import(new AirPassengersTrafficImport, $request->file('file')->store('temp'));
+    return back()->with('success', 'vehicleImportations imported successfully.');
 }
+
+public function export()
+{
+    return Excel::download(new AirPassengersTrafficExport, 'AirTrafficData.xlsx');
+}
+
+
+}
+
+
+
+
+

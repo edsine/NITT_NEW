@@ -27,7 +27,49 @@
 
 <div class="container mt-2">
     
-    <button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button>
+   
+
+<div class="container mt-2">
+    @if(session('success'))
+        <div>{{ session('success') }}</div>
+    @endif
+    
+    
+
+   
+    <div class="d-flex">
+        <div class="mr-auto p-2">
+            <div class="d-flex justify-content-start">
+                <button id="add-record" class="btn btn-primary mb-3" data-toggle="modal" data-target="#addModal">Add</button>
+            </div>
+        </div>
+        <div class="p-2">
+            <div class="d-flex justify-content-end">
+                <form id="importForm" action="{{ route('VehicleImportation.import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="file" id="fileInput">
+                    <button type="submit" class="btn btn-secondary mr-2">Import</button>
+                </form>
+    
+                <button type="button" class="btn btn-secondary">
+                    <a href="{{ route('VehicleImportation.export') }}" style="color:white; text-decoration:none;">Export</a>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('importForm').addEventListener('submit', function(event) {
+            const fileInput = document.getElementById('fileInput');
+            
+            if (!fileInput.value) {
+                event.preventDefault(); // Prevent form submission
+                alert('Please select a file before importing.');
+            }
+        });
+    </script>
+    
+
     <table id="passengers-table" class="table table-bordered table-striped">
         <thead>
             <tr>
@@ -55,6 +97,8 @@
                 <td>
                     <button class="btn btn-warning btn-sm edit-record" data-id="{{ $passenger->id }}" data-toggle="modal" data-target="#editModal" data-record="{{ $passenger }}">Edit</button>
                     <button class="btn btn-danger btn-sm delete-record" data-id="{{ $passenger->id }}" data-toggle="modal" data-target="#deleteModal" data-record="{{ $passenger }}">Delete</button>
+                    <button class="btn btn-info btn-sm view-chart" data-id="{{ $passenger->id }}" data-toggle="modal" data-target="#chartModal" data-record="{{ $passenger }}">View Chart</button> 
+     
                 </td>
             </tr>
             @endforeach
@@ -229,7 +273,6 @@
 
 
 
- 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></>
 
