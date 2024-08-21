@@ -37,7 +37,7 @@
 
 <br/>
 <button type="button" class="btn btn-warning">
- <a href="data.ntd.ng"> VIEW VISUALIZATION DATA</a>
+ <a href="http://data.ntd.ng"> VIEW VISUALIZATION DATA</a>
 </button>
 <br/>
 <br/>

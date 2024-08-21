@@ -124,15 +124,15 @@
                         <input type="text" class="form-control" id="addYear" name="year" required>
                     </div>
                     <div class="form-group">
-                        <label for="addVehicleCategory">Vehicle Category</label>
+                        <label for="addVehicleCategory">Govt Motor Vehicle</label>
                         <input type="text" class="form-control" id="addVehicleCategory" name="vehicle_category" required>
                     </div>
                     <div class="form-group">
-                        <label for="addNewVehicleCount">New Vehicle Count</label>
+                        <label for="addNewVehicleCount">Govt Articulated</label>
                         <input type="number" class="form-control" id="addNewVehicleCount" name="new_vehicle_count" required>
                     </div>
                     <div class="form-group">
-                        <label for="addUsedVehicleCount">Used Vehicle Count</label>
+                        <label for="addUsedVehicleCount">Private Motor Vehicle</label>
                         <input type="number" class="form-control" id="addUsedVehicleCount" name="used_vehicle_count" required>
                     </div>
                 </div>
@@ -165,15 +165,15 @@
                         <input type="text" class="form-control" id="editYear" name="year" required>
                     </div>
                     <div class="form-group">
-                        <label for="editVehicleCategory">Vehicle Category</label>
+                        <label for="editVehicleCategory">Govt Motor Vehicle</label>
                         <input type="text" class="form-control" id="editVehicleCategory" name="vehicle_category" required>
                     </div>
                     <div class="form-group">
-                        <label for="editNewVehicleCount">New Vehicle Count</label>
+                        <label for="editNewVehicleCount">Govt Articulated</label>
                         <input type="number" class="form-control" id="editNewVehicleCount" name="new_vehicle_count" required>
                     </div>
                     <div class="form-group">
-                        <label for="editUsedVehicleCount">Used Vehicle Count</label>
+                        <label for="editUsedVehicleCount">Private Motor Vehicle</label>
                         <input type="number" class="form-control" id="editUsedVehicleCount" name="used_vehicle_count" required>
                     </div>
                 </div>
@@ -287,11 +287,11 @@
                     vehicleChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: ['Govt Vehicles', 'Private Vehicles'],
+                            labels: ['Govt Vehicles','Govt Articulated', 'Private Vehicles'],
                             datasets: [{
                                 label: 'Vehicle Counts',
-                                data: [data.new_vehicle_count, data.used_vehicle_count],
-                                backgroundColor: ['#36a2eb', '#ff6384']
+                                data: [data.vehicle_category, data.new_vehicle_count, data.used_vehicle_count],
+                                backgroundColor: ['#36a2eb', '#ff6384', '#ff5733']
                             }]
                         },
                         options: {
