@@ -36,8 +36,8 @@
 <div class="wrapper">
 
 <br/>
-<button type="button" class="btn btn-primary">
-  VIEW VISUALIZATION DATA
+<button type="button" class="btn btn-warning">
+ <a href="data.ntd.ng"> VIEW VISUALIZATION DATA</a>
 </button>
 <br/>
 <br/>
