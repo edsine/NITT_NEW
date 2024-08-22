@@ -22,10 +22,11 @@ class VehicleImportantImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-         $vehicle = VehicleImportation::find($row['id']);
+        // Check if a record with the given ID already exists
+        $vehicle = VehicleImportation::find($row['id']);
 
-         if ($vehicle) {
-            // Update the existing record
+        if ($vehicle) {
+            // If the record exists, update it
             $vehicle->update([
                 'year'  => $row['year'],
                 'vehicle_category' => $row['vehicle_category'],
@@ -35,9 +36,9 @@ class VehicleImportantImport implements ToModel, WithHeadingRow
 
             return $vehicle;
         } else {
-            // Create a new record
+            // If the record does not exist, create a new one
             return new VehicleImportation([
-                'id' => $row['id'], // Ensure the ID is set if you want to use the ID from the CSV
+                'id' => $row['id'], // Use the ID from the spreadsheet
                 'year'  => $row['year'],
                 'vehicle_category' => $row['vehicle_category'],
                 'new_vehicle_count' => $row['new_vehicle_count'],
@@ -46,7 +47,6 @@ class VehicleImportantImport implements ToModel, WithHeadingRow
         }
     }
 }
-
 
 
 
