@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GrossDomesticProductBillionController;
 use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
@@ -21,6 +22,7 @@ use App\Http\Controllers\RailwayRollingStockController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\GrossDomesticProductBillionControllerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -232,6 +234,11 @@ Route::group(['prefix' => 'users', 'as' => 'users.'], function (){
 
 });
 Route::resource('users', UsersController::class); 
+
+
+
+
+Route::resource('grossdomesticproduction_billion', GrossDomesticProductBillionController::class);
 
 
 
