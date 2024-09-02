@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\GrossDomesticProductBillionController;
+>>>>>>> efb829592f2573ee30b0bf82f9e1eaebe6cd69e8
 use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
@@ -21,6 +25,10 @@ use App\Http\Controllers\RailwayRollingStockController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\GrossDomesticProductBillionControllerController;
+>>>>>>> efb829592f2573ee30b0bf82f9e1eaebe6cd69e8
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -236,3 +244,11 @@ Route::resource('users', UsersController::class);
 
 
 
+<<<<<<< HEAD
+=======
+Route::resource('grossdomesticproduction_billion', GrossDomesticProductBillionController::class);
+
+
+
+
+>>>>>>> efb829592f2573ee30b0bf82f9e1eaebe6cd69e8

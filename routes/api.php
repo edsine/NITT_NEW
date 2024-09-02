@@ -1,9 +1,31 @@
 <?php
 
+<<<<<<< HEAD
+=======
+use App\Models\CargoDelta;
+use App\Models\CargoNigeria;
+use App\Models\CargoOnne;
+use App\Models\CargoRivers;
+use App\Models\CargoTincan;
+>>>>>>> efb829592f2573ee30b0bf82f9e1eaebe6cd69e8
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthAPIController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+<<<<<<< HEAD
+=======
+use App\Http\Controllers\Api\GrossDomesticProductBillionController;
+use App\Http\Controllers\Api\GrossDomesticProductPercentController;
+use App\Http\Controllers\Api\RailPassengerTrafficController;
+use App\Http\Controllers\Api\CargoApapaController;
+use App\Http\Controllers\Api\CargoCalabarController;
+use App\Http\Controllers\Api\CargoDeltaController;
+use App\Http\Controllers\Api\CargoNigeriaController;
+use App\Http\Controllers\Api\CargoOnneController;
+use App\Http\Controllers\Api\CargoRiversController;
+use App\Http\Controllers\Api\CargoTincanController;
+use App\Http\Controllers\Api\NationalShipController;
+>>>>>>> efb829592f2573ee30b0bf82f9e1eaebe6cd69e8
 
 /*
 |--------------------------------------------------------------------------
@@ -94,3 +116,20 @@ Route::get('gross_domestic_products_formatted_by_percentage', [App\Http\Controll
 // Rail mode data endpoints
 Route::get('railway_passengers_formatted', [App\Http\Controllers\API\RailwayPassengerAPIController::class, 'indexFormatted']);
 Route::get('railway_freight_formatted', [App\Http\Controllers\API\RailwayPassengerAPIController::class, 'indexFormattedFreight']);
+<<<<<<< HEAD
+=======
+
+
+
+Route::apiResource('grossdomesticproduction_billion', GrossDomesticProductBillionController::class);
+Route::apiResource('grossdomesticproduction_percent', GrossDomesticProductPercentController::class);
+Route::apiResource('national_ship', NationalShipController::class);
+Route::apiResource('cargo_apapa', CargoApapaController::class);
+Route::apiResource('cargo_calabar', CargoCalabarController::class);
+Route::apiResource('cargo_delta', CargoDeltaController::class);
+Route::apiResource('cargo_nigeria', CargoNigeriaController::class);
+Route::apiResource('cargo_onne', CargoOnneController::class);
+Route::apiResource('cargo_rivers', CargoRiversController::class);
+Route::apiResource('cargo_tincan', CargoTincanController::class);
+Route::apiResource('rail_passenger', RailPassengerTrafficController::class);
+>>>>>>> efb829592f2573ee30b0bf82f9e1eaebe6cd69e8
