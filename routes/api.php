@@ -70,6 +70,27 @@ use App\Http\Controllers\Api\TrafficByStates2019Controller;
 use App\Http\Controllers\Api\TrafficByStates2020Controller;
 use App\Http\Controllers\Api\TrafficByStates2021Controller;
 use App\Http\Controllers\Api\TrafficByStates2022Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes1q2015Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes1q2016Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes1q2018Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes1q2021Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes1q2022Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes2q2015Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes2q2016Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes2q2018Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes2q2021Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes2q2022Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes3q2015Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes3q2016Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes3q2018Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes3q2021Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes3q2022Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes4q2015Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes4q2016Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes4q2018Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes4q2021Controller;
+use App\Http\Controllers\Api\FleetRoadCrashes4q2022Controller;
+
 /*
 
 |--------------------------------------------------------------------------
@@ -225,4 +246,23 @@ Route::apiResource('road_traffic_crashes_2020', TrafficByStates2020Controller::c
 Route::apiResource('road_traffic_crashes_2021', TrafficByStates2021Controller::class);
 Route::apiResource('road_traffic_crashes_2022', TrafficByStates2022Controller::class);
 
-
+Route::apiResource('fleet_crashes_q12015', FleetRoadCrashes1q2015Controller::class);
+Route::apiResource('fleet_crashes_q12016', FleetRoadCrashes1q2016Controller::class);
+Route::apiResource('fleet_crashes_q12018', FleetRoadCrashes1q2018Controller::class);
+Route::apiResource('fleet_crashes_q12021', FleetRoadCrashes1q2021Controller::class);
+Route::apiResource('fleet_crashes_q12022', FleetRoadCrashes1q2022Controller::class);
+Route::apiResource('fleet_crashes_q22015', FleetRoadCrashes2q2015Controller::class);
+Route::apiResource('fleet_crashes_q22016', FleetRoadCrashes2q2016Controller::class);
+Route::apiResource('fleet_crashes_q22018', FleetRoadCrashes2q2018Controller::class);
+Route::apiResource('fleet_crashes_q22021', FleetRoadCrashes2q2021Controller::class);
+Route::apiResource('fleet_crashes_q22022', FleetRoadCrashes2q2022Controller::class);
+Route::apiResource('fleet_crashes_q32015', FleetRoadCrashes3q2015Controller::class);
+Route::apiResource('fleet_crashes_q32016', FleetRoadCrashes3q2016Controller::class);
+Route::apiResource('fleet_crashes_q32018', FleetRoadCrashes3q2018Controller::class);
+Route::apiResource('fleet_crashes_q32021', FleetRoadCrashes3q2021Controller::class);
+Route::apiResource('fleet_crashes_q32022', FleetRoadCrashes3q2022Controller::class);
+Route::apiResource('fleet_crashes_q42015', FleetRoadCrashes4q2015Controller::class);
+Route::apiResource('fleet_crashes_q42016', FleetRoadCrashes4q2016Controller::class);
+Route::apiResource('fleet_crashes_q42018', FleetRoadCrashes4q2018Controller::class);
+Route::apiResource('fleet_crashes_q42021', FleetRoadCrashes4q2021Controller::class);
+Route::apiResource('fleet_crashes_q42022', FleetRoadCrashes4q2022Controller::class);
