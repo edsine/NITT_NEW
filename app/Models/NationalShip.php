@@ -14,7 +14,7 @@ class NationalShip extends Model
     protected $table = 'national_ships';
 
     protected $fillable = [
-        'year' => 'required|integer',
+        'year' => 'required|numeric',
         'ship_traffic' => 'required|numeric',
         'container_traffic' => 'required|numeric',
         'cargo_throughput' => 'required|numeric',

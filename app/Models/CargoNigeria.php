@@ -17,6 +17,6 @@ class CargoNigeria extends Model
         'year',
         'import',
         'export',
-        'throughput',
+        'total_throughput',
     ];
 }

@@ -1,85 +1,69 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\RailPassengerTraffic;
 use Illuminate\Http\Request;
+use App\Imports\RailPassengerTrafficImport;
+use App\Exports\RailPassengerTrafficExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RailPassengerTrafficController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function RailPassengerTraffics(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $RailPassengerTraffics = RailPassengerTraffic::all();
+  
+        return view ('RailPassengerTraffic', compact('RailPassengerTraffics'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    RailPassengerTraffic::create($request->all());
+      return redirect()->route('RailPassengerTraffic');
+  }
+  
+  public function update(Request $request, $id)
+  {
+      $RailPassengerTraffics = RailPassengerTraffic::findOrFail($id);
+      $RailPassengerTraffics->update($request->all());
+      return redirect()->route('RailPassengerTraffic');
+  }
+  
+  public function destroy($id)
+  {
+    RailPassengerTraffic::destroy($id);
+      return redirect()->route('RailPassengerTraffic');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new RailPassengerTrafficImport, $request->file('file'));
+        return back()->with('success', 'Imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing file: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new RailPassengerTrafficExport, 'railPassenger.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
+}
+  
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\RailPassengerTraffic  $railPassengerTraffic
-     * @return \Illuminate\Http\Response
-     */
-    public function show(RailPassengerTraffic $railPassengerTraffic)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\RailPassengerTraffic  $railPassengerTraffic
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(RailPassengerTraffic $railPassengerTraffic)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\RailPassengerTraffic  $railPassengerTraffic
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, RailPassengerTraffic $railPassengerTraffic)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\RailPassengerTraffic  $railPassengerTraffic
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(RailPassengerTraffic $railPassengerTraffic)
-    {
-        //
-    }
 }
