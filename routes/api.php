@@ -1,11 +1,22 @@
 <?php
 
+use App\Http\Controllers\AkwaIbomFleetController;
+use App\Http\Controllers\Api\AdamawaNewDriversLicenseGenderController;
+use App\Http\Controllers\Api\AdamawaRenewalDriversLicenseGenderController;
+use App\Http\Controllers\Api\AdamawaTrafficOffencesVioController;
+use App\Http\Controllers\Api\AkwaIbomAccidentController;
+use App\Http\Controllers\Api\AkwaIbomTrafficOffencesVioController;
+use App\Http\Controllers\Api\AkwaIbomTransportFromUyoController;
+use App\Http\Controllers\Api\CausativeFactor2014Controller;
+use App\Http\Controllers\Api\CausativeFactor2017Controller;
+use App\Http\Controllers\Api\CausativeFactor2019Controller;
+use App\Http\Controllers\Api\CausativeFactor2020Controller;
+use App\Http\Controllers\Api\CausativeFactor2021Controller;
+use App\Http\Controllers\Api\CausativeFactorController;
+use App\Http\Controllers\Api\NationalDriversLicenseStatesController;
 use App\Http\Controllers\Api\RoadTrafficCrashesYearController;
-use App\Models\CargoDelta;
-use App\Models\CargoNigeria;
-use App\Models\CargoOnne;
-use App\Models\CargoRivers;
-use App\Models\CargoTincan;
+use App\Http\Controllers\ReprintVehicleAndMotorcycleController;
+use App\Models\AdamawaNewDriversLicenseGender;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthAPIController;
@@ -90,6 +101,12 @@ use App\Http\Controllers\Api\FleetRoadCrashes4q2016Controller;
 use App\Http\Controllers\Api\FleetRoadCrashes4q2018Controller;
 use App\Http\Controllers\Api\FleetRoadCrashes4q2021Controller;
 use App\Http\Controllers\Api\FleetRoadCrashes4q2022Controller;
+use App\Http\Controllers\Api\MajorRoadTrafficController;
+use App\Http\Controllers\Api\PeopleKilledRoadCrashesController;
+use App\Http\Controllers\Api\PersonsInjuredRoadCrashesController;
+use App\Http\Controllers\Api\VehiclePlateNumberController;
+use App\Http\Controllers\Api\MotorCyclePlateNumberController;
+
 
 /*
 
@@ -266,3 +283,29 @@ Route::apiResource('fleet_crashes_q42016', FleetRoadCrashes4q2016Controller::cla
 Route::apiResource('fleet_crashes_q42018', FleetRoadCrashes4q2018Controller::class);
 Route::apiResource('fleet_crashes_q42021', FleetRoadCrashes4q2021Controller::class);
 Route::apiResource('fleet_crashes_q42022', FleetRoadCrashes4q2022Controller::class);
+Route::apiResource('major_road', MajorRoadTrafficController::class);
+Route::apiResource('people_killed', PeopleKilledRoadCrashesController::class);
+Route::apiResource('persons_injured', PersonsInjuredRoadCrashesController::class);
+
+
+Route::apiResource('vehicle_platenumber', VehiclePlateNumberController::class);
+Route::apiResource('motorcycle_platenumber', MotorCyclePlateNumberController::class);
+Route::apiResource('vehicle_motorcycle', ReprintVehicleAndMotorcycleController::class);
+
+Route::apiResource('causative', CausativeFactorController::class);
+Route::apiResource('causative2014', CausativeFactor2014Controller::class);
+Route::apiResource('causative2017', CausativeFactor2017Controller::class);
+Route::apiResource('causative2019', CausativeFactor2019Controller::class);
+Route::apiResource('causative2020', CausativeFactor2020Controller::class);
+Route::apiResource('causative2021', CausativeFactor2021Controller::class);
+
+Route::apiResource('national_license_states', NationalDriversLicenseStatesController::class);
+
+Route::apiResource('adamawa_new_driver', AdamawaNewDriversLicenseGenderController::class);
+Route::apiResource('adamawa_renewal_driver', AdamawaRenewalDriversLicenseGenderController::class);
+Route::apiResource('adamawa_offences', AdamawaTrafficOffencesVioController::class);
+
+Route::apiResource('akwaibom_offences', AkwaIbomTrafficOffencesVioController::class);
+Route::apiResource('akwaibom_fleet', AkwaIbomfleetController::class);
+Route::apiResource('akwaibom_accidents', AkwaIbomAccidentController::class);
+Route::apiResource('akwaibom_transport', AkwaIbomTransportFromUyoController::class);

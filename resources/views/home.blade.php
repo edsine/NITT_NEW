@@ -51,61 +51,94 @@
 <div class="container-fluid">
 
 <div class="row">
-<div class="col-lg-3 col-6">
+<div class="col-lg-2 col-4">
 
 <div class="small-box bg-info">
 <div class="inner">
-<h3>{{ \App\Models\VehicleImportation::count() }}</h3>
-<p>Vehicle Production analysis</p>
+<h3>{{ \App\Models\GrossDomesticProductBillion::count() }}</h3>
+<p>All Mode</p>
 </div>
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="{{ route('records') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('allModeDashboard') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
-<div class="col-lg-3 col-6">
+<div class="col-lg-2 col-4">
 
 <div class="small-box bg-success">
 <div class="inner">
-<h3>0</h3>
-<p>All Mode Data</p>
+<h3>{{ \App\Models\GrossDomesticProductPercent::count() }}</h3>
+<p>Rail Mode</p>
 </div>
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('railModeDashboard') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
-<div class="col-lg-3 col-6">
+<div class="col-lg-2 col-4">
 
 <div class="small-box bg-warning">
 <div class="inner">
-<h3>0</h3>
-<p>Rail Mode Data</p>
+<h3>{{ \App\Models\CargoApapa::count() }}</h3>
+<p>Maritime Mode</p>
 </div>
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('maritimeModeDashboard') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
-<div class="col-lg-3 col-6">
+<div class="col-lg-2 col-4">
 
 <div class="small-box bg-danger">
 <div class="inner">
-<h3>0</h3>
-<p>Water Mode Data</p>
+<h3>{{ \App\Models\CargoCalabar::count() }}</h3>
+<p>Air Mode</p>
 </div>
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('airModeDashboard') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
+
+
+
+<div class="col-lg-2 col-4">
+
+  <div class="small-box bg-secondary">
+  <div class="inner">
+  <h3>{{ \App\Models\CargoApapa::count() }}</h3>
+  <p>Adamawa State</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+
+  
+<div class="col-lg-2 col-4">
+
+  <div class="small-box bg-primary">
+  <div class="inner">
+  <h3>{{ \App\Models\CargoApapa::count() }}</h3>
+  <p>Akwa Ibom</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+
+
 
 </div>
 
@@ -114,54 +147,84 @@
   <div class="container-fluid">
   
   <div class="row">
-  <div class="col-lg-3 col-6">
+  <div class="col-lg-2 col-4">
   
   <div class="small-box bg-info">
   <div class="inner">
-  <h3>0</h3>
-  <p>Air Mode Data</p>
+  <h3>{{ \App\Models\CargoDelta::count() }}</h3>
+  <p>Road Mode</p>
   </div>
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('roadDashboard') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
-  <div class="col-lg-3 col-6">
+  <div class="col-lg-2 col-4">
   
   <div class="small-box bg-success">
   <div class="inner">
-  <h3>0</h3>
-  <p>Road Mode Data</p>
+  <h3>{{ \App\Models\CargoOnne::count() }}</h3>
+  <p>Fleet Operators</p>
   </div>
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('fleetDashboard') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
-  <div class="col-lg-3 col-6">
+  <div class="col-lg-2 col-4">
   
   <div class="small-box bg-warning">
   <div class="inner">
-  <h3>0</h3>
-  <p>Fleet Operator</p>
+  <h3>{{ \App\Models\NationalShip::count() }}</h3>
+  <p>Vehicle Production</p>
   </div>
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('vehicleDashboard') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
-  <div class="col-lg-3 col-6">
+  <div class="col-lg-2 col-4">
   
   <div class="small-box bg-danger">
   <div class="inner">
   <h3>0</h3>
-  <p>Casuality Factor For Road Crashes</p>
+  <p>Causative Factor</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="{{ route('causativeDashboard') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+
+  
+<div class="col-lg-2 col-4">
+
+  <div class="small-box bg-secondary">
+  <div class="inner">
+  <h3>{{ \App\Models\CargoApapa::count() }}</h3>
+  <p>Bauchi State</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+
+  
+<div class="col-lg-2 col-4">
+
+  <div class="small-box bg-primary">
+  <div class="inner">
+  <h3>{{ \App\Models\CargoApapa::count() }}</h3>
+  <p>Benue State</p>
   </div>
   <div class="icon">
   <i class=""></i>
@@ -177,43 +240,6 @@
 
 
 
-
-<script src="plugins/jquery/jquery.min.js"></script>
-
-<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
-
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<script src="plugins/chart.js/Chart.min.js"></script>
-
-<script src="plugins/sparklines/sparkline.js"></script>
-
-<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-
-<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
-
-<script src="plugins/moment/moment.min.js"></script>
-<script src="plugins/daterangepicker/daterangepicker.js"></script>
-
-<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-
-<script src="plugins/summernote/summernote-bs4.min.js"></script>
-
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-
-<script src="dist/js/adminlte.js?v=3.2.0"></script>
-
-<script src="dist/js/demo.js"></script>
-
-<script src="dist/js/pages/dashboard.js"></script>
-
-
-    
 
 
 

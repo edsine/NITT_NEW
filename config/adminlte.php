@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'NITT',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -322,87 +322,71 @@ return [
            // 'label' =>4 ,
             'label_color' => 'success',
         ],
+
+
         [
-            'text' => 'Vehicle Production',
-            'url' => '/records',
+            'text' => 'All Mode',
+            'url' => '/allModeDashboard',
             'icon' => 'nav-icon fas fa-th',
            // 'label' => 4,
             'label_color' => 'success',
         ],
+
         [
-            'text' => 'Road Mode Data',
+            'text' => 'Maritime mode',
+            'url' => '/maritimeModeDashboard',
             'icon' => 'nav-icon fas fa-th',
-            'submenu' => [
-                [
-                    'text' => 'Passenger',
-                    'url' => '/passengers',
-                ],
-                
-                [
-                    'text' => 'Freight',
-                    'url' => '/freights',
-                ],
-            ],
+           // 'label' => 4,
+            'label_color' => 'success',
         ],
+
         [
-            'text' => 'Air Mode Data',
+            'text' => 'Rail mode',
+            'url' => '/railModeDashboard',
             'icon' => 'nav-icon fas fa-th',
-            'submenu' => [
-                [
-                    'text' => 'Transport Data',
-                    'url' => '/transports',
-                ],
-                
-                [
-                    'text' => 'Traffic',
-                    'url' => '/traffics',
-                ],
-            ],
+           // 'label' => 4,
+            'label_color' => 'success',
         ],
         
+        
         [
-            'text' => 'Rail Mode Data',
-            'url' => '/stocks',
+            'text' => 'Air Mode',
+            'url' => '/airModeDashboard',
             'icon' => 'nav-icon fas fa-th',
            // 'label' => 4,
             'label_color' => 'success',
         ],
         [
-            'text' => 'Maritime Data',
-            'icon' => 'nav-icon fas fa-th',
-            'submenu' => [
-                [
-                    'text' => 'Maritime Academy',
-                    'url' => '/macademys',
-                ],
-                
-                [
-                    'text' => 'Maritime Administration',
-                    'url' => 'madmins',
-                ],
-                [
-                    'text' => 'Maritime Transport',
-                    'url' => 'mtransports',
-                ],
-            ],
-        ],
-        [
-            'text' => 'Fleet OPerator Data',
-            'url' => '/trains',
+            'text' => 'Road Mode',
+            'url' => '/roadModeDashboard',
             'icon' => 'nav-icon fas fa-th',
            // 'label' => 4,
             'label_color' => 'success',
         ],
         [
-            'text' => 'Gross Domestic Products',
-            'url' => '/grosses',
+            'text' => 'Vehicle Production Analysis',
+            'url' => '/vehicleProductionDashboard',
             'icon' => 'nav-icon fas fa-th',
            // 'label' => 4,
             'label_color' => 'success',
         ],
         [
-            'text' => 'Ship Container Traffic',
-            'url' => '/ships',
+            'text' => 'Fleet Operators',
+            'url' => '/fleetOperatorDashboard',
+            'icon' => 'nav-icon fas fa-th',
+           // 'label' => 4,
+            'label_color' => 'success',
+        ],
+        [
+            'text' => 'Causative Factors Road crashes',
+            'url' => '/causativeFactorDashboard',
+            'icon' => 'nav-icon fas fa-th',
+           // 'label' => 4,
+            'label_color' => 'success',
+        ],
+        [
+            'text' => 'National Drivers LIcense',
+            'url' => '/nationalDriversLicenseDashboard',
             'icon' => 'nav-icon fas fa-th',
           //  'label' => 4,
             'label_color' => 'success',

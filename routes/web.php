@@ -22,7 +22,17 @@ use App\Http\Controllers\RailwayRollingStockController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\GrossDomesticProductBillionControllerController;
+use App\Http\Controllers\GrossDomesticProductPercentController;
+use App\Http\Controllers\AllDataModeController;
+use App\Http\Controllers\RailPassengerTrafficController;
+use App\Http\Controllers\NationalShipController;
+use App\Http\Controllers\CargoApapaController;
+use App\Http\Controllers\CargoCalabarController;
+use App\Http\Controllers\CargoDeltaController;
+use App\Http\Controllers\CargoNigeriaController;
+use App\Http\Controllers\CargoOnneController;
+use App\Http\Controllers\CargoRiversController;
+use App\Http\Controllers\CargoTincanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,6 +89,11 @@ Route::get('/marineTransport', [App\Http\Controllers\MaritimeTransportController
 Route::get('/trainPunctuality', [App\Http\Controllers\TrainPunctualityController::class, 'trainPunctuality' ])->name('trainPunctuality');
 Route::get('/grossDomestic', [App\Http\Controllers\GrossDomesticProductionController::class, 'grossDomestic' ])->name('grossDomestic');
 Route::get('/shipContainer', [App\Http\Controllers\ShipContainerTrafficController::class, 'shipContainer' ])->name('shipContainer');
+
+
+Route::get('allMode', [App\Http\Controllers\AllDataModeController::class, 'allMode' ])->name('allMode');
+
+Route::get('allMode', [App\Http\Controllers\AllDataModeController::class, 'showTable'])->name('showTable');
 
 
 
@@ -227,6 +242,12 @@ Route::post('VehicleImportation/import', [VehicleImportationController::class, '
 
 
 
+Route::post('/gross_billion/import', [GrossDomesticProductBillionController::class, 'import'])->name('gross_billion.import');
+Route::get('/gross_billion/export', [GrossDomesticProductBillionController::class, 'export'])->name('gross_billion.export');
+
+Route::post('/gross_percent/import', [GrossDomesticProductPercentController::class, 'import'])->name('gross_percent.import');
+Route::get('/gross_percent/export', [GrossDomesticProductPercentController::class, 'export'])->name('gross_percent.export');
+
 
 Route::group(['prefix' => 'users', 'as' => 'users.'], function (){
     Route::resource('permissions', PermissionController::class);
@@ -243,3 +264,112 @@ Route::resource('grossdomesticproduction_billion', GrossDomesticProductBillionCo
 
 
 
+
+
+//ROAD PASSENGER
+Route::get('grossBillions', [GrossDomesticProductBillionController::class, 'grossBillions'])->name('grossBillions');
+Route::post('passengerRoadTransport', [PassengerRoadTransportDataController::class, 'store'])->name('passengerRoadTransport.store');
+Route::put('passengerRoadTransport/{id}', [PassengerRoadTransportDataController::class, 'update'])->name('passengerRoadTransport.update');
+Route::delete('passengerRoadTransport/{id}', [PassengerRoadTransportDataController::class, 'destroy'])->name('passengerRoadTransport.destroy');
+
+
+
+//ROAD PASSENGER
+Route::get('grossPercents', [GrossDomesticProductPercentController::class, 'grossPercents'])->name('grossPercents');
+Route::post('passengerRoadTransport', [PassengerRoadTransportDataController::class, 'store'])->name('passengerRoadTransport.store');
+Route::put('passengerRoadTransport/{id}', [PassengerRoadTransportDataController::class, 'update'])->name('passengerRoadTransport.update');
+Route::delete('passengerRoadTransport/{id}', [PassengerRoadTransportDataController::class, 'destroy'])->name('passengerRoadTransport.destroy');
+
+
+
+
+Route::get('GrossDomesticProductBillion/export', [GrossDomesticProductBillionController::class, 'export'])->name('GrossDomesticProductBillion.export');
+Route::post('GrossDomesticProductBillion/import', [GrossDomesticProductBillionController::class, 'import'])->name('GrossDomesticProductBillion.import');
+
+
+
+Route::get('GrossDomesticProductPercent/export', [GrossDomesticProductPercentController::class, 'export'])->name('GrossDomesticProductPercent.export');
+Route::post('GrossDomesticProductPercent/import', [GrossDomesticProductPercentController::class, 'import'])->name('GrossDomesticProductPercent.import');
+
+
+//ROAD PASSENGER
+Route::get('railPassengerTraffics', [RailPassengerTrafficController::class, 'RailPassengerTraffics'])->name('railPassengerTraffics');
+Route::post('passengerRoadTransport', [PassengerRoadTransportDataController::class, 'store'])->name('passengerRoadTransport.store');
+Route::put('passengerRoadTransport/{id}', [PassengerRoadTransportDataController::class, 'update'])->name('passengerRoadTransport.update');
+Route::delete('passengerRoadTransport/{id}', [PassengerRoadTransportDataController::class, 'destroy'])->name('passengerRoadTransport.destroy');
+
+
+
+Route::get('RailPassengerTraffic/export', [RailPassengerTrafficController::class, 'export'])->name('RailPassengerTraffic.export');
+Route::post('RailPassengerTraffic/import', [RailPassengerTrafficController::class, 'import'])->name('RailPassengerTraffic.import');
+
+
+Route::get('nationalShips', [NationalShipController::class, 'NationalShips'])->name('NationalShips');
+
+Route::get('NationalShip/export', [NationalShipController::class, 'export'])->name('NationalShip.export');
+Route::post('NationalShip/import', [NationalShipController::class, 'import'])->name('NationalShip.import');
+
+
+
+Route::get('cargoApapa', [CargoApapaController:: class, 'CargoApapas'])->name('CargoApapa');
+
+Route::get('CargoApapa/export', [CargoApapaController::class, 'export'])->name('CargoApapa.export');
+Route::post('CargoApapa/import', [CargoApapaController::class, 'import'])->name('CargoApapa.import');
+
+
+Route::get('cargoCalabar', [CargoCalabarController::class, 'CargoCalabar'])->name('CargoCalabar');
+
+Route::get('CargoCalabar/export', [CargoCalabarController::class, 'export'])->name('CargoCalabar.export');
+Route::post('CargoCalabar/import', [CargoCalabarController::class, 'import'])->name('CargoCalabar.import');
+
+
+Route::get('cargoDelta', [CargoDeltaController::class, 'CargoDelta'])->name('CargoDelta');
+
+Route::get('CargoDelta/export', [CargoDeltaController::class, 'export'])->name('CargoDelta.export');
+Route::post('CargoDelta/import', [CargoDeltaController::class, 'import'])->name('CargoDelta.import');
+
+
+Route::get('cargoNigeria', [CargoNigeriaController::class, 'CargoNigeria'])->name('CargoNigeria');
+
+Route::get('CargoNigeria/export', [CargoNigeriaController::class, 'export'])->name('CargoNigeria.export');
+Route::post('CargoNigeria/import', [CargoNigeriaController::class, 'import'])->name('CargoNigeria.import');
+
+
+Route::get('cargoOnne', [CargoOnneController::class, 'CargoOnne'])->name('CargoOnne');
+
+Route::get('CargoOnne/export', [CargoOnneController::class, 'export'])->name('CargoOnne.export');
+Route::post('CargoOnne/import', [CargoOnneController::class, 'import'])->name('CargoOnne.import');
+
+
+Route::get('cargoRivers', [CargoRiversController::class, 'CargoRivers'])->name('CargoRivers');
+
+Route::get('CargoRivers/export', [CargoRiversController::class, 'export'])->name('CargoRivers.export');
+Route::post('CargoRivers/import', [CargoRiversController::class, 'import'])->name('CargoRivers.import');
+
+
+Route::get('cargoTincans', [CargoTincanController::class, 'CargoTincans'])->name('CargoTincans');
+
+Route::get('CargoTincan/export', [CargoTincanController::class, 'export'])->name('CargoTincans.export');
+Route::post('CargoTincan/import', [CargoTincanController::class, 'import'])->name('CargoTincans.import');
+
+
+Route::get('/allModeDashboard', [GrossDomesticProductBillionController::class, 'dashboard'])->name('allModeDashboard');
+
+
+Route::get('/maritimeModeDashboard', [NationalShipController::class, 'dashboard'])->name('maritimeModeDashboard');
+
+
+Route::get('/railModeDashboard', [AllDataModeController::class, 'railDashboard'])->name('railModeDashboard');
+
+Route::get('/airModeDashboard', [AllDataModeController::class, 'airDashboard'])->name('airModeDashboard');
+
+Route::get('/fleetOperatorDashboard', [AllDataModeController::class, 'fleetDashboard'])->name('fleetDashboard');
+
+Route::get('/vehicleProductionDashboard', [AllDataModeController::class, 'vehicleDashboard'])->name('vehicleDashboard');
+
+Route::get('/nationalDriversLicenseDashboard', [AllDataModeController::class, 'nationalDashboard'])->name('nationalDashboard');
+
+Route::get('/causativeFactorDashboard', [AllDataModeController::class, 'CausativeDashboard'])->name('causativeDashboard');
+
+
+Route::get('/roadModeDashboard', [AllDataModeController::class, 'roadDashboard'])->name('roadDashboard');

@@ -4,82 +4,63 @@ namespace App\Http\Controllers;
 
 use App\Models\CargoOnne;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\CargoOnneImport;
+use App\Exports\CargoOnneExport;
 
 class CargoOnneController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function CargoOnne(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $cargoOnnes = CargoOnne::all();
+  
+        return view ('cargoOnne', compact('cargoOnnes'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    CargoOnne::create($request->all());
+      return redirect()->route('cargoOnne');
+  }
+  
+  public function update(Request $request, $id)
+  {
+      $cargoNigeria = CargoOnne::findOrFail($id);
+      $cargoNigeria->update($request->all());
+      return redirect()->route('cargoOnne');
+  }
+  
+  public function destroy($id)
+  {
+    CargoOnne::destroy($id);
+      return redirect()->route('cargoOnne');
+  }
+  
+ 
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new CargoOnneImport, $request->file('file'));
+        return back()->with('success', 'Imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing file: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new CargoOnneExport, 'CargoOnne.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CargoOnne  $cargoOnne
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CargoOnne $cargoOnne)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CargoOnne  $cargoOnne
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CargoOnne $cargoOnne)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CargoOnne  $cargoOnne
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CargoOnne $cargoOnne)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\CargoOnne  $cargoOnne
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(CargoOnne $cargoOnne)
-    {
-        //
-    }
+}
 }
