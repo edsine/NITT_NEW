@@ -56,7 +56,7 @@
 <div class="small-box bg-info">
 <div class="inner">
 <h3>{{ \App\Models\GrossDomesticProductBillion::count() }}</h3>
-<p>All Mode</p>
+<p>All Transport Mode</p>
 </div>
 <div class="icon">
 <i class=""></i>
