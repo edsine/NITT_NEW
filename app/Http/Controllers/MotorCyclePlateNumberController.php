@@ -4,82 +4,74 @@ namespace App\Http\Controllers;
 
 use App\Models\MotorCyclePlateNumber;
 use Illuminate\Http\Request;
+use App\Imports\MotorCyclePlateNumberImport;
+use App\Exports\MotorCyclePlateNumberExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class MotorCyclePlateNumberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    function motorCyclePlate(){
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MotorCyclePlateNumber  $motorCyclePlateNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MotorCyclePlateNumber $motorCyclePlateNumber)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MotorCyclePlateNumber  $motorCyclePlateNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MotorCyclePlateNumber $motorCyclePlateNumber)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MotorCyclePlateNumber  $motorCyclePlateNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MotorCyclePlateNumber $motorCyclePlateNumber)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MotorCyclePlateNumber  $motorCyclePlateNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MotorCyclePlateNumber $motorCyclePlateNumber)
-    {
-        //
+        $motorCyclePlates = MotorCyclePlateNumber::all();
+  
+        return view ('motorCyclePlate', compact('motorCyclePlates'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    MotorCyclePlateNumber::create($request->all());
+      return redirect()->route('motorCyclePlate');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $motorCyclePlates = MotorCyclePlateNumber::findOrFail($id);
+    $motorCyclePlates->update($request->all());
+      return redirect()->route('motorCyclePlate');
+  }
+  
+  public function destroy($id)
+  {
+    MotorCyclePlateNumber::destroy($id);
+      return redirect()->route('motorCyclePlate');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new MotorCyclePlateNumberImport, $request->file('file'));
+        return back()->with('success', 'Gross Billions imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing Gross Billions: ' . $e->getMessage());
     }
 }
+
+public function export()
+{
+    try {
+        return Excel::download(new MotorCyclePlateNumberExport, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
+    }
+}
+
+
+
+  
+  }
+
+

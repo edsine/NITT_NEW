@@ -16,9 +16,9 @@ class CreateRailPassengerTrafficTable extends Migration
         Schema::create('rail_passenger_traffic', function (Blueprint $table) {
             $table->id();
             $table->integer('year');
-            $table->decimal('passenger_volume', 15, 2);
-            $table->decimal('revenue', 15, 2);
-            $table->decimal('freight', 15, 2);
+            $table->decimal('passenger_volume', 15, );
+            $table->decimal('revenue', 15, );
+            $table->decimal('freight', 15, );
             $table->timestamps();
         });
     }

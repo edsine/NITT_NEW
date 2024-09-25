@@ -15,10 +15,10 @@ class CreateCargoNigeriasTable extends Migration
     {
         Schema::create('cargo_nigerias', function (Blueprint $table) {
             $table->id();
-            $table->decimal('year', 15, 2);
-            $table->decimal('import', 15, 2);
-            $table->decimal('export', 15, 2);
-            $table->decimal('total_throughput', 15, 2);
+            $table->decimal('year', 15, );
+            $table->decimal('import', 15, );
+            $table->decimal('export', 15, );
+            $table->decimal('total_throughput', 15, );
             $table->timestamps();
         });
     }

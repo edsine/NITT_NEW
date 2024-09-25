@@ -4,82 +4,74 @@ namespace App\Http\Controllers;
 
 use App\Models\NationalDriversLicenseStates;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\NationalDriversLiceseStatesExport;
+use App\Imports\NationalDriversLiceseStatesImport;
 
 class NationalDriversLicenseStatesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+      
+    
+        function nationalDrivers(){
+    
+            $nationalDrivers = NationalDriversLicenseStates::all();
+      
+            return view ('nationalDrivers', compact('nationalDrivers'));
+            
+      
+            }
+            
+            
+            
+      
+      
+      public function store(Request $request)
+      {
+        NationalDriversLicenseStates::create($request->all());
+          return redirect()->route('nationalDrivers');
+      }
+      
+      public function update(Request $request, $id)
+      {
+        $nationalDrivers= NationalDriversLicenseStates::findOrFail($id);
+        $nationalDrivers->update($request->all());
+          return redirect()->route('nationalDrivers');
+      }
+      
+      public function destroy($id)
+      {
+        NationalDriversLicenseStates::destroy($id);
+          return redirect()->route('nationalDrivers');
+      }
+      
+     
+      
+      
+      
+      
+      public function import(Request $request)
     {
-        //
+        try {
+            Excel::import(new NationalDriversLiceseStatesImport, $request->file('file'));
+            return back()->with('success', 'imported successfully.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error importing File: ' . $e->getMessage());
+        }
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    
+    public function export()
     {
-        //
+        try {
+            return Excel::download(new NationalDriversLiceseStatesExport, 'file.csv');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Error exporting file: ' . $e->getMessage());
+        }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\NationalDriversLicenseStates  $nationalDriversLicenseStates
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NationalDriversLicenseStates $nationalDriversLicenseStates)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\NationalDriversLicenseStates  $nationalDriversLicenseStates
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(NationalDriversLicenseStates $nationalDriversLicenseStates)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NationalDriversLicenseStates  $nationalDriversLicenseStates
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, NationalDriversLicenseStates $nationalDriversLicenseStates)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\NationalDriversLicenseStates  $nationalDriversLicenseStates
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(NationalDriversLicenseStates $nationalDriversLicenseStates)
-    {
-        //
-    }
-}
+    
+    
+    
+      
+      }
+    
+    
+    

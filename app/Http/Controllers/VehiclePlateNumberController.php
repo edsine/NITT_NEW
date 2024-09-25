@@ -4,82 +4,74 @@ namespace App\Http\Controllers;
 
 use App\Models\VehiclePlateNumber;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\VehiclePlateNumberImport;
+use App\Exports\VehiclePlateNumberExport;
 
 class VehiclePlateNumberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    function vehiclePlate(){
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\VehiclePlateNumber  $vehiclePlateNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function show(VehiclePlateNumber $vehiclePlateNumber)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\VehiclePlateNumber  $vehiclePlateNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(VehiclePlateNumber $vehiclePlateNumber)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\VehiclePlateNumber  $vehiclePlateNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, VehiclePlateNumber $vehiclePlateNumber)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\VehiclePlateNumber  $vehiclePlateNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(VehiclePlateNumber $vehiclePlateNumber)
-    {
-        //
+        $vehiclePlates = VehiclePlateNumber::all();
+  
+        return view ('vehiclePlate', compact('vehiclePlates'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    VehiclePlateNumber::create($request->all());
+      return redirect()->route('vehiclePlate');
+  }
+  
+  public function update(Request $request, $id)
+  {
+      $vehiclePlates = VehiclePlateNumber::findOrFail($id);
+      $vehiclePlates->update($request->all());
+      return redirect()->route('vehiclePlate');
+  }
+  
+  public function destroy($id)
+  {
+    VehiclePlateNumber::destroy($id);
+      return redirect()->route('vehiclePlate');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new VehiclePlateNumberImport, $request->file('file'));
+        return back()->with('success', 'Gross Billions imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing Gross Billions: ' . $e->getMessage());
     }
 }
+
+public function export()
+{
+    try {
+        return Excel::download(new VehiclePlateNumberExport, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
+    }
+}
+
+
+
+  
+  }
+
+

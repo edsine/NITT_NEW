@@ -15,10 +15,10 @@ class CreateNationalShipsTable extends Migration
     {
         Schema::create('national_ships', function (Blueprint $table) {
             $table->id();
-            $table->decimal('year', 15, 2);
-            $table->decimal('ship_traffic', 15, 2);
-            $table->decimal('container_traffic', 15, 2);
-            $table->decimal('cargo_throughput', 15, 2);
+            $table->decimal('year', 15, );
+            $table->decimal('ship_traffic', 15, );
+            $table->decimal('container_traffic', 15, );
+            $table->decimal('cargo_throughput', 15, );
             $table->timestamps();
         });
     }

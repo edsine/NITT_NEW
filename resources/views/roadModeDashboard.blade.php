@@ -53,7 +53,7 @@
 <div class="small-box bg-info">
 <div class="inner">
 <h3>{{ \App\Models\GrossDomesticProductBillion::count() }}</h3>
-<p>Cargo Apapa</p>
+<p>Traffic Crashes 1960-2022</p>
 </div>
 <div class="icon">
 <i class=""></i>
@@ -67,7 +67,7 @@
 <div class="small-box bg-success">
 <div class="inner">
 <h3>{{ \App\Models\GrossDomesticProductPercent::count() }}</h3>
-<p>Cargo Calabar</p>
+<p>2006 (RTC) </p>
 </div>
 <div class="icon">
 <i class=""></i>
@@ -81,7 +81,7 @@
 <div class="small-box bg-warning">
 <div class="inner">
 <h3>{{ \App\Models\CargoApapa::count() }}</h3>
-<p>Cargo Nigeria</p>
+<p>2008 (RTC)</p>
 </div>
 <div class="icon">
 <i class=""></i>
@@ -95,7 +95,7 @@
 <div class="small-box bg-danger">
 <div class="inner">
 <h3>{{ \App\Models\CargoCalabar::count() }}</h3>
-<p>Cargo Delta</p>
+<p>2009 (RTC)</p>
 </div>
 <div class="icon">
 <i class=""></i>
@@ -111,7 +111,7 @@
   <div class="small-box bg-secondary">
   <div class="inner">
   <h3>{{ \App\Models\CargoApapa::count() }}</h3>
-  <p>National Ship</p>
+  <p>2010 (RTC)</p>
   </div>
   <div class="icon">
   <i class=""></i>
@@ -126,7 +126,7 @@
   <div class="small-box bg-primary">
   <div class="inner">
   <h3>{{ \App\Models\CargoApapa::count() }}</h3>
-  <p>Cargo Onne</p>
+  <p>2011 (RTC)</p>
   </div>
   <div class="icon">
   <i class=""></i>
@@ -140,6 +140,7 @@
 </div>
 
 
+
 <section class="content">
   <div class="container-fluid">
   
@@ -148,8 +149,8 @@
   
   <div class="small-box bg-info">
   <div class="inner">
-  <h3>{{ \App\Models\CargoDelta::count() }}</h3>
-  <p>Cargo Tincans</p>
+  <h3>{{ \App\Models\GrossDomesticProductBillion::count() }}</h3>
+  <p>2012 (RTC)</p>
   </div>
   <div class="icon">
   <i class=""></i>
@@ -157,6 +158,176 @@
   <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
+  
+  <div class="col-lg-2 col-4">
+  
+  <div class="small-box bg-success">
+  <div class="inner">
+  <h3>{{ \App\Models\GrossDomesticProductPercent::count() }}</h3>
+  <p>2013 (RTC)</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+  
+  <div class="col-lg-2 col-4">
+  
+  <div class="small-box bg-warning">
+  <div class="inner">
+  <h3>{{ \App\Models\CargoApapa::count() }}</h3>
+  <p>2014 (RTC)</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+  
+  <div class="col-lg-2 col-4">
+  
+  <div class="small-box bg-danger">
+  <div class="inner">
+  <h3>{{ \App\Models\CargoCalabar::count() }}</h3>
+  <p>2015 (RTC)</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+  
+  
+  
+  <div class="col-lg-2 col-4">
+  
+    <div class="small-box bg-secondary">
+    <div class="inner">
+    <h3>{{ \App\Models\CargoApapa::count() }}</h3>
+    <p>2016 (RTC)</p>
+    </div>
+    <div class="icon">
+    <i class=""></i>
+    </div>
+    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+    </div>
+  
+    
+  <div class="col-lg-2 col-4">
+  
+    <div class="small-box bg-primary">
+    <div class="inner">
+    <h3>{{ \App\Models\CargoApapa::count() }}</h3>
+    <p>2017 (RTC)</p>
+    </div>
+    <div class="icon">
+    <i class=""></i>
+    </div>
+    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+    </div>
+  
+  
+
+  
+  
+  </div>
+
+  
+
+<section class="content">
+  <div class="container-fluid">
+  
+  <div class="row">
+  <div class="col-lg-2 col-4">
+  
+  <div class="small-box bg-info">
+  <div class="inner">
+  <h3>{{ \App\Models\GrossDomesticProductBillion::count() }}</h3>
+  <p>2018 (RTC)</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+  
+  <div class="col-lg-2 col-4">
+  
+  <div class="small-box bg-success">
+  <div class="inner">
+  <h3>{{ \App\Models\GrossDomesticProductPercent::count() }}</h3>
+  <p>2019 (RTC)</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+  
+  <div class="col-lg-2 col-4">
+  
+  <div class="small-box bg-warning">
+  <div class="inner">
+  <h3>{{ \App\Models\CargoApapa::count() }}</h3>
+  <p>2020 (RTC)</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+  
+  <div class="col-lg-2 col-4">
+  
+  <div class="small-box bg-danger">
+  <div class="inner">
+  <h3>{{ \App\Models\CargoCalabar::count() }}</h3>
+  <p>2021 (RTC)</p>
+  </div>
+  <div class="icon">
+  <i class=""></i>
+  </div>
+  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  </div>
+  </div>
+  
+  
+  
+  <div class="col-lg-2 col-4">
+  
+    <div class="small-box bg-secondary">
+    <div class="inner">
+    <h3>{{ \App\Models\CargoApapa::count() }}</h3>
+    <p>2022 (RTC)</p>
+    </div>
+    <div class="icon">
+    <i class=""></i>
+    </div>
+    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+    </div>
+  
+   
+  
+  
+
+  
+  
+  </div>
+  
+  </div>
+
+
+
   
   
 

@@ -53,7 +53,7 @@
 <div class="small-box bg-info">
 <div class="inner">
 <h3>{{ \App\Models\GrossDomesticProductBillion::count() }}</h3>
-<p>Cargo Apapa</p>
+<p>Causative Factor 2013</p>
 </div>
 <div class="icon">
 <i class=""></i>
@@ -67,7 +67,7 @@
 <div class="small-box bg-success">
 <div class="inner">
 <h3>{{ \App\Models\GrossDomesticProductPercent::count() }}</h3>
-<p>Cargo Calabar</p>
+<p>Causative Factor 2014</p>
 </div>
 <div class="icon">
 <i class=""></i>
@@ -81,7 +81,7 @@
 <div class="small-box bg-warning">
 <div class="inner">
 <h3>{{ \App\Models\CargoApapa::count() }}</h3>
-<p>Cargo Nigeria</p>
+<p>Causative Factor 2017</p>
 </div>
 <div class="icon">
 <i class=""></i>
@@ -95,7 +95,7 @@
 <div class="small-box bg-danger">
 <div class="inner">
 <h3>{{ \App\Models\CargoCalabar::count() }}</h3>
-<p>Cargo Delta</p>
+<p>Causative Factor 2019</p>
 </div>
 <div class="icon">
 <i class=""></i>
@@ -111,7 +111,7 @@
   <div class="small-box bg-secondary">
   <div class="inner">
   <h3>{{ \App\Models\CargoApapa::count() }}</h3>
-  <p>National Ship</p>
+  <p>Causative Factor 2020</p>
   </div>
   <div class="icon">
   <i class=""></i>
@@ -126,7 +126,7 @@
   <div class="small-box bg-primary">
   <div class="inner">
   <h3>{{ \App\Models\CargoApapa::count() }}</h3>
-  <p>Cargo Onne</p>
+  <p>Causative Factor 2021</p>
   </div>
   <div class="icon">
   <i class=""></i>
@@ -140,24 +140,7 @@
 </div>
 
 
-<section class="content">
-  <div class="container-fluid">
-  
-  <div class="row">
-  <div class="col-lg-2 col-4">
-  
-  <div class="small-box bg-info">
-  <div class="inner">
-  <h3>{{ \App\Models\CargoDelta::count() }}</h3>
-  <p>Cargo Tincans</p>
-  </div>
-  <div class="icon">
-  <i class=""></i>
-  </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-  </div>
-  </div>
-  
+
   
 
 

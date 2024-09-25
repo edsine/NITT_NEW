@@ -4,82 +4,66 @@ namespace App\Http\Controllers;
 
 use App\Models\MargeretEkpoAirport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\MargeretEkpoAirportImport;
+use App\Exports\MargeretEkpoAirportExport;
 
 class MargeretEkpoAirportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function margeret(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $margerets = MargeretEkpoAirport::all();
+  
+        return view ('margeret', compact('margerets'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    MargeretEkpoAirport::create($request->all());
+      return redirect()->route('margeret');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $margeret = MargeretEkpoAirport::findOrFail($id);
+    $margeret->update($request->all());
+      return redirect()->route('margeret');
+  }
+  
+  public function destroy($id)
+  {
+    MargeretEkpoAirport::destroy($id);
+      return redirect()->route('margeret');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new MargeretEkpoAirportImport, $request->file('file'));
+        return back()->with('success', ' imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new MargeretEkpoAirportExport, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MargeretEkpoAirport  $margeretEkpoAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MargeretEkpoAirport $margeretEkpoAirport)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MargeretEkpoAirport  $margeretEkpoAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MargeretEkpoAirport $margeretEkpoAirport)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MargeretEkpoAirport  $margeretEkpoAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MargeretEkpoAirport $margeretEkpoAirport)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MargeretEkpoAirport  $margeretEkpoAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MargeretEkpoAirport $margeretEkpoAirport)
-    {
-        //
-    }
 }

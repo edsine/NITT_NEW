@@ -15,15 +15,15 @@ class CreateAkanuIbiamAirportsTable extends Migration
     {
         Schema::create('akanu_ibiam_airports', function (Blueprint $table) {
             $table->id();
-            $table->decimal('year', 15, 2);
-            $table->decimal('domestic_passenger_traffic', 15, 2);
-            $table->decimal('international_passenger_traffic', 15, 2);
-            $table->decimal('air_traffic_domestic', 15, 2);
-            $table->decimal('air_traffic_international', 15, 2);
-            $table->decimal('cargo_traffic_domestic', 15, 2);
-            $table->decimal('cargo_traffic_international', 15, 2);
-            $table->decimal('mail_traffic_domestic', 15, 2);
-            $table->decimal('mail_traffic_international', 15, 2);
+            $table->decimal('year', 15, );
+            $table->decimal('domestic_passenger_traffic', 15, );
+            $table->decimal('international_passenger_traffic', 15, );
+            $table->decimal('air_traffic_domestic', 15, );
+            $table->decimal('air_traffic_international', 15, );
+            $table->decimal('cargo_traffic_domestic', 15, );
+            $table->decimal('cargo_traffic_international', 15, );
+            $table->decimal('mail_traffic_domestic', 15, );
+            $table->decimal('mail_traffic_international', 15, );
             $table->timestamps();
         });
     }

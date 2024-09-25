@@ -33,6 +33,10 @@ use App\Http\Controllers\CargoNigeriaController;
 use App\Http\Controllers\CargoOnneController;
 use App\Http\Controllers\CargoRiversController;
 use App\Http\Controllers\CargoTincanController;
+use App\Http\Controllers\VehiclePlateNumberController;
+use App\Http\Controllers\MotorCyclePlateNumberController;
+use App\Http\Controllers\ReprintVehicleAndMotorcycleController;
+use App\Http\Controllers\NationalDriversLicenseStatesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -373,3 +377,36 @@ Route::get('/causativeFactorDashboard', [AllDataModeController::class, 'Causativ
 
 
 Route::get('/roadModeDashboard', [AllDataModeController::class, 'roadDashboard'])->name('roadDashboard');
+
+
+
+
+Route::get('vehiclePlate', [VehiclePlateNumberController::class, 'vehiclePlate'])->name('vehiclePlate');
+
+Route::get('vehiclePlate/export', [VehiclePlateNumberController::class, 'export'])->name('vehiclePlate.export');
+Route::post('vehiclePlate/import', [VehiclePlateNumberController::class, 'import'])->name('vehiclePlate.import');
+
+
+
+Route::get('motorCyclePlate', [MotorCyclePlateNumberController::class, 'motorCyclePlate'])->name('motorCyclePlate');
+
+Route::get('motorCyclePlate/export', [MotorCyclePlateNumberController::class, 'export'])->name('motorCyclePlate.export');
+Route::post('motorCyclePlate/import', [MotorCyclePlateNumberController::class, 'import'])->name('motorCyclePlate.import');
+
+
+
+
+Route::get('reprint', [ReprintVehicleAndMotorcycleController::class, 'reprint'])->name('reprint');
+
+Route::get('reprint/export', [ReprintVehicleAndMotorcycleController::class, 'export'])->name('reprint.export');
+Route::post('reprint/import', [ReprintVehicleAndMotorcycleController::class, 'import'])->name('reprint.import');
+
+
+
+
+Route::get('nationalDrivers', [NationalDriversLicenseStatesController::class, 'nationalDrivers'])->name('nationalDrivers');
+
+Route::get('nationalDrivers/export', [NationalDriversLicenseStatesController::class, 'nationalDrivers'])->name('nationalDrivers.export');
+Route::post('nationalDrivers/import', [NationalDriversLicenseStatesController::class, 'nationalDrivers'])->name('nationalDrivers.import');
+
+

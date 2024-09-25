@@ -53,110 +53,22 @@
 <div class="small-box bg-info">
 <div class="inner">
 <h3>{{ \App\Models\GrossDomesticProductBillion::count() }}</h3>
-<p>Cargo Apapa</p>
+<p>National Drivers License</p>
 </div>
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-</div>
-</div>
-
-<div class="col-lg-2 col-4">
-
-<div class="small-box bg-success">
-<div class="inner">
-<h3>{{ \App\Models\GrossDomesticProductPercent::count() }}</h3>
-<p>Cargo Calabar</p>
-</div>
-<div class="icon">
-<i class=""></i>
-</div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-</div>
-</div>
-
-<div class="col-lg-2 col-4">
-
-<div class="small-box bg-warning">
-<div class="inner">
-<h3>{{ \App\Models\CargoApapa::count() }}</h3>
-<p>Cargo Nigeria</p>
-</div>
-<div class="icon">
-<i class=""></i>
-</div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-</div>
-</div>
-
-<div class="col-lg-2 col-4">
-
-<div class="small-box bg-danger">
-<div class="inner">
-<h3>{{ \App\Models\CargoCalabar::count() }}</h3>
-<p>Cargo Delta</p>
-</div>
-<div class="icon">
-<i class=""></i>
-</div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('nationalDrivers') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
 
-
-<div class="col-lg-2 col-4">
-
-  <div class="small-box bg-secondary">
-  <div class="inner">
-  <h3>{{ \App\Models\CargoApapa::count() }}</h3>
-  <p>National Ship</p>
-  </div>
-  <div class="icon">
-  <i class=""></i>
-  </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-  </div>
-  </div>
-
-  
-<div class="col-lg-2 col-4">
-
-  <div class="small-box bg-primary">
-  <div class="inner">
-  <h3>{{ \App\Models\CargoApapa::count() }}</h3>
-  <p>Cargo Onne</p>
-  </div>
-  <div class="icon">
-  <i class=""></i>
-  </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-  </div>
-  </div>
 
 
 
 </div>
 
 
-<section class="content">
-  <div class="container-fluid">
-  
-  <div class="row">
-  <div class="col-lg-2 col-4">
-  
-  <div class="small-box bg-info">
-  <div class="inner">
-  <h3>{{ \App\Models\CargoDelta::count() }}</h3>
-  <p>Cargo Tincans</p>
-  </div>
-  <div class="icon">
-  <i class=""></i>
-  </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-  </div>
-  </div>
   
   
 

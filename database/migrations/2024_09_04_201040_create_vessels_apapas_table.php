@@ -16,8 +16,8 @@ class CreateVesselsApapasTable extends Migration
         Schema::create('vessels_apapas', function (Blueprint $table) {
             $table->id();
             $table->string('year', 15,);
-            $table->decimal('number_of_vessels', 15, 3);
-            $table->decimal('grt', 15, 3);
+            $table->decimal('number_of_vessels', 15, );
+            $table->decimal('grt', 15, );
             $table->timestamps();
         });
     }

@@ -4,82 +4,68 @@ namespace App\Http\Controllers;
 
 use App\Models\NnamdiAzikweAirport;
 use Illuminate\Http\Request;
+use App\Imports\NnamdiAzikweAirportImport;
+use App\Exports\NnamdiAzikweAirportExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class NnamdiAzikweAirportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+        function nnamdiAzikwe(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $nnamdiAzikwes = NnamdiAzikweAirport::all();
+  
+        return view ('nnamdi', compact('nnamdiAzikwes'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    NnamdiAzikweAirport::create($request->all());
+      return redirect()->route('nnamdiAzikwe');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $nnamdiAzikwe = NnamdiAzikweAirport::findOrFail($id);
+    $nnamdiAzikwe->update($request->all());
+      return redirect()->route('nnamdiAzikwe');
+  }
+  
+  public function destroy($id)
+  {
+    NnamdiAzikweAirport::destroy($id);
+      return redirect()->route('nnamdiAzikwe');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new NnamdiAzikweAirportImport, $request->file('file'));
+        return back()->with('success', ' imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new NnamdiAzikweAirportExport, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\NnamdiAzikweAirport  $nnamdiAzikweAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function show(NnamdiAzikweAirport $nnamdiAzikweAirport)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\NnamdiAzikweAirport  $nnamdiAzikweAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(NnamdiAzikweAirport $nnamdiAzikweAirport)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\NnamdiAzikweAirport  $nnamdiAzikweAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, NnamdiAzikweAirport $nnamdiAzikweAirport)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\NnamdiAzikweAirport  $nnamdiAzikweAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(NnamdiAzikweAirport $nnamdiAzikweAirport)
-    {
-        //
-    }
 }

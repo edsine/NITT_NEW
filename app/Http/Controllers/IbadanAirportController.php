@@ -4,82 +4,66 @@ namespace App\Http\Controllers;
 
 use App\Models\IbadanAirport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\IbadanAirportExport;
+use App\Imports\IbadanAirportImport;
 
 class IbadanAirportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function ibadan(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $ibadans = IbadanAirport::all();
+  
+        return view ('ibadan', compact('ibadans'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    IbadanAirport::create($request->all());
+      return redirect()->route('ibadan');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $Ibadan = IbadanAirport::findOrFail($id);
+    $Ibadan->update($request->all());
+      return redirect()->route('ibadan');
+  }
+  
+  public function destroy($id)
+  {
+    IbadanAirport::destroy($id);
+      return redirect()->route('ibadan');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new IbadanAirportImport, $request->file('file'));
+        return back()->with('success', ' imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new IbadanAirportExport, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\IbadanAirport  $ibadanAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function show(IbadanAirport $ibadanAirport)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\IbadanAirport  $ibadanAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(IbadanAirport $ibadanAirport)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\IbadanAirport  $ibadanAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, IbadanAirport $ibadanAirport)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\IbadanAirport  $ibadanAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(IbadanAirport $ibadanAirport)
-    {
-        //
-    }
 }
