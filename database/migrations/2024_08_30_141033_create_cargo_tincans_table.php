@@ -15,10 +15,10 @@ class CreateCargoTincansTable extends Migration
     {
         Schema::create('cargo_tincans', function (Blueprint $table) {
             $table->id();
-            $table->decimal('year', 15, 2);
-            $table->decimal('import', 15, 2);
-            $table->decimal('export', 15, 2);
-            $table->decimal('throughput', 15, 2);
+            $table->decimal('year', 15, );
+            $table->decimal('import', 15, );
+            $table->decimal('export', 15, );
+            $table->decimal('throughput', 15, );
             $table->timestamps();
         });
     }

@@ -4,82 +4,65 @@ namespace App\Http\Controllers;
 
 use App\Models\YolaAirport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\YolaAirportImport;
+use App\Exports\YolaAirportExport;
 
 class YolaAirportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function yola(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $yolas = YolaAirport::all();
+  
+        return view ('yola', compact('yolas'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    YolaAirport::create($request->all());
+      return redirect()->route('yola');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $yola = YolaAirport::findOrFail($id);
+    $yola->update($request->all());
+      return redirect()->route('yola');
+  }
+  
+  public function destroy($id)
+  {
+    YolaAirport::destroy($id);
+      return redirect()->route('yola');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new YolaAirportImport, $request->file('file'));
+        return back()->with('success', ' imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new YolaAirportExport, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\YolaAirport  $yolaAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function show(YolaAirport $yolaAirport)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\YolaAirport  $yolaAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(YolaAirport $yolaAirport)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\YolaAirport  $yolaAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, YolaAirport $yolaAirport)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\YolaAirport  $yolaAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(YolaAirport $yolaAirport)
-    {
-        //
-    }
+}
 }

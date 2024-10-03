@@ -72,7 +72,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('traffic2006') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -86,7 +86,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('traffic2008') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -100,7 +100,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('traffic2009') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -116,7 +116,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2010') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
 
@@ -131,7 +131,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2011') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
 
@@ -155,7 +155,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2012') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
@@ -169,7 +169,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2013') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
@@ -183,7 +183,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2014') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
@@ -197,7 +197,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2015') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
@@ -213,7 +213,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('traffic2016') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
   
@@ -228,7 +228,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('traffic2017') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
   
@@ -254,7 +254,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2018') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
@@ -268,7 +268,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2019') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
@@ -282,7 +282,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2020') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
@@ -296,7 +296,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('traffic2021') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
@@ -312,7 +312,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('traffic2022') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
   

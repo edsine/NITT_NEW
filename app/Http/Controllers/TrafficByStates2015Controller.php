@@ -4,82 +4,65 @@ namespace App\Http\Controllers;
 
 use App\Models\TrafficByStates2015;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\TrafficByState2015Import;
+use App\Exports\TrafficByState2015Export;
 
 class TrafficByStates2015Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function traffic2015(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $traffic2015s = TrafficByStates2015::all();
+  
+        return view ('traffic2015', compact('traffic2015s'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    TrafficByStates2015::create($request->all());
+      return redirect()->route('traffic2015');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $traffic2015s = TrafficByStates2015::findOrFail($id);
+    $traffic2015s->update($request->all());
+      return redirect()->route('traffic2015');
+  }
+  
+  public function destroy($id)
+  {
+    TrafficByStates2015::destroy($id);
+      return redirect()->route('traffic2015');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new TrafficByState2015Import, $request->file('file'));
+        return back()->with('success', ' imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new TrafficByState2015Export, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TrafficByStates2015  $trafficByStates2015
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TrafficByStates2015 $trafficByStates2015)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\TrafficByStates2015  $trafficByStates2015
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(TrafficByStates2015 $trafficByStates2015)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TrafficByStates2015  $trafficByStates2015
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, TrafficByStates2015 $trafficByStates2015)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\TrafficByStates2015  $trafficByStates2015
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TrafficByStates2015 $trafficByStates2015)
-    {
-        //
-    }
+}
 }

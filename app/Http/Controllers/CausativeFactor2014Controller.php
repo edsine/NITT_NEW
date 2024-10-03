@@ -4,115 +4,63 @@ namespace App\Http\Controllers;
 
 use App\Models\CausativeFactor2014;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\CausativeFactor2014Import;
+use App\Exports\CausativeFactor2014Export;
 
 class CausativeFactor2014Controller extends Controller
 {
-    public function index()
-    {
-        $data = CausativeFactor2014::all();
-        return response()->json($data);
-    }
+    function factor14(){
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'state' => 'required|string',
-            'spv' => 'required|numeric',
-            'upwd' => 'required|numeric',
-            'tbt' => 'required|numeric',
-            'loc' => 'required|numeric',
-            'mov' => 'required|numeric',
-            'wov' => 'required|numeric',
-            'bfl' => 'required|numeric',
-            'ovc' => 'required|numeric',
-            'dot' => 'required|numeric',
-            'wot' => 'required|numeric',
-            'dgd' => 'required|numeric',
-            'brd' => 'required|numeric',
-            'rtv' => 'required|numeric',
-            'obs' => 'required|numeric',
-            'sos' => 'required|numeric',
-            'dov' => 'required|numeric',
-            'dad' => 'required|numeric',
-            'rov' => 'required|numeric',
-            'pwr' => 'required|numeric',
-            'ftq' => 'required|numeric',
-            'slv' => 'required|numeric',
-            'other' => 'required|numeric',
-            'total' => 'required|numeric',
-        ]);
-
-        $data = CausativeFactor2014::create($request->all());
-
-        return response()->json([
-            'message' => 'Data created successfully',
-            'data' => $data
-        ], 201);
-    }
-
-    public function show($id)
-    {
-        $data = CausativeFactor2014::find($id);
-
-        if (is_null($data)) {
-            return response()->json(['message' => 'Data not found'], 404);
+        $factor14s = CausativeFactor2014::all();
+  
+        return view ('factor14', compact('factor14s'));
+        
+  
         }
-
-        return response()->json($data);
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    CausativeFactor2014::create($request->all());
+      return redirect()->route('factor14');
+  }
+  
+  public function update(Request $request, $id)
+  {
+      $factor14s =CausativeFactor2014::findOrFail($id);
+      $factor14s->update($request->all());
+      return redirect()->route('factor14');
+  }
+  
+  public function destroy($id)
+  {
+    CausativeFactor2014::destroy($id);
+      return redirect()->route('factor14');
+  }
+  
+ 
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new CausativeFactor2014Import, $request->file('file'));
+        return back()->with('success', 'Imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing file: ' . $e->getMessage());
     }
+}
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-           'state' => 'required|string',
-            'spv' => 'required|numeric',
-            'upwd' => 'required|numeric',
-            'tbt' => 'required|numeric',
-            'loc' => 'required|numeric',
-            'mov' => 'required|numeric',
-            'wov' => 'required|numeric',
-            'bfl' => 'required|numeric',
-            'ovc' => 'required|numeric',
-            'dot' => 'required|numeric',
-            'wot' => 'required|numeric',
-            'dgd' => 'required|numeric',
-            'brd' => 'required|numeric',
-            'rtv' => 'required|numeric',
-            'obs' => 'required|numeric',
-            'sos' => 'required|numeric',
-            'dov' => 'required|numeric',
-            'dad' => 'required|numeric',
-            'rov' => 'required|numeric',
-            'pwr' => 'required|numeric',
-            'ftq' => 'required|numeric',
-            'slv' => 'required|numeric',
-            'other' => 'required|numeric',
-            'total' => 'required|numeric',
-        ]);
-
-        $data = CausativeFactor2014::find($id);
-
-        if (is_null($data)) {
-            return response()->json(['message' => 'Data not found'], 404);
-        }
-
-        $data->update($request->all());
-
-        return response()->json([
-            'message' => 'Data updated successfully',
-            'data' => $data
-        ]);
+public function export()
+{
+    try {
+        return Excel::download(new CausativeFactor2014Export, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
-
-    public function destroy($id)
-    {
-        $data = CausativeFactor2014::find($id);
-
-        if (is_null($data)) {
-            return response()->json(['message' => 'Data not found'], 404);
-        }
-
-        $data->delete();
-
-        return response()->json(['message' => 'Data deleted successfully']);
-    }}
+}
+}

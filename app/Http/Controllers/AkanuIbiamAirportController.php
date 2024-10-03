@@ -14,7 +14,7 @@ class AkanuIbiamAirportController extends Controller
 
         $akanuIbiams = AkanuIbiamAirport::all();
   
-        return view ('akanuIbiam', compact('akanuIbiams'));
+        return view ('akanu', compact('akanuIbiams'));
         
   
         }
@@ -26,20 +26,20 @@ class AkanuIbiamAirportController extends Controller
   public function store(Request $request)
   {
     AkanuIbiamAirport::create($request->all());
-      return redirect()->route('akanuIbiam');
+      return redirect()->route('akanu');
   }
   
   public function update(Request $request, $id)
   {
     $akanuIbiam = AkanuIbiamAirport::findOrFail($id);
     $akanuIbiam->update($request->all());
-      return redirect()->route('akanuIbiam');
+      return redirect()->route('akanu');
   }
   
   public function destroy($id)
   {
     AkanuIbiamAirport::destroy($id);
-      return redirect()->route('akanuIbiam');
+      return redirect()->route('akanu');
   }
   
  

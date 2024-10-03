@@ -4,82 +4,65 @@ namespace App\Http\Controllers;
 
 use App\Models\MaiduguriAirport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MaiduguriAirportExport;
+use App\Imports\MaiduguriAirportImport;
 
 class MaiduguriAirportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function maiduguri(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $maiduguris = MaiduguriAirport::all();
+  
+        return view ('maiduguri', compact('maiduguris'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    MaiduguriAirport::create($request->all());
+      return redirect()->route('mallam');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $maiduguri = MaiduguriAirport::findOrFail($id);
+    $maiduguri->update($request->all());
+      return redirect()->route('maiduguri');
+  }
+  
+  public function destroy($id)
+  {
+    MaiduguriAirport::destroy($id);
+      return redirect()->route('maiduguri');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new MaiduguriAirportImport, $request->file('file'));
+        return back()->with('success', ' imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new MaiduguriAirportExport, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MaiduguriAirport  $maiduguriAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MaiduguriAirport $maiduguriAirport)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MaiduguriAirport  $maiduguriAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MaiduguriAirport $maiduguriAirport)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MaiduguriAirport  $maiduguriAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MaiduguriAirport $maiduguriAirport)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MaiduguriAirport  $maiduguriAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MaiduguriAirport $maiduguriAirport)
-    {
-        //
-    }
+}
 }

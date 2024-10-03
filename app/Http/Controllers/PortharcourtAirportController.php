@@ -4,82 +4,66 @@ namespace App\Http\Controllers;
 
 use App\Models\PortharcourtAirport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\PortharcourtAirportImport;
+use App\Exports\PortharcourtAirportExport;
+
 
 class PortharcourtAirportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function portharcourt(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $portharcourts = PortharcourtAirport::all();
+  
+        return view ('portharcourt', compact('portharcourts'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    PortharcourtAirport::create($request->all());
+      return redirect()->route('portharcourt');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $portharcourt = PortharcourtAirport::findOrFail($id);
+    $portharcourt->update($request->all());
+      return redirect()->route('portharcourt');
+  }
+  
+  public function destroy($id)
+  {
+    PortharcourtAirport::destroy($id);
+      return redirect()->route('portharcourt');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new PortharcourtAirportImport, $request->file('file'));
+        return back()->with('success', ' imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new PortharcourtAirportExport, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PortharcourtAirport  $portharcourtAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PortharcourtAirport $portharcourtAirport)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PortharcourtAirport  $portharcourtAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PortharcourtAirport $portharcourtAirport)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PortharcourtAirport  $portharcourtAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PortharcourtAirport $portharcourtAirport)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PortharcourtAirport  $portharcourtAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PortharcourtAirport $portharcourtAirport)
-    {
-        //
-    }
+}
 }

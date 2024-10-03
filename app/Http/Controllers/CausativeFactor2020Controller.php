@@ -4,82 +4,63 @@ namespace App\Http\Controllers;
 
 use App\Models\CausativeFactor2020;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\CausativeFactor2020Import;
+use App\Exports\CausativeFactor2020Export;
 
 class CausativeFactor2020Controller extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function factor20(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $factor14s = CausativeFactor2020::all();
+  
+        return view ('factor20', compact('factor20s'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    CausativeFactor2020::create($request->all());
+      return redirect()->route('factor20');
+  }
+  
+  public function update(Request $request, $id)
+  {
+      $factor20s =CausativeFactor2020::findOrFail($id);
+      $factor20s->update($request->all());
+      return redirect()->route('factor20');
+  }
+  
+  public function destroy($id)
+  {
+    CausativeFactor2020::destroy($id);
+      return redirect()->route('factor20');
+  }
+  
+ 
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new CausativeFactor2020Import, $request->file('file'));
+        return back()->with('success', 'Imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing file: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new CausativeFactor2020Export, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\CausativeFactor2020  $causativeFactor2020
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CausativeFactor2020 $causativeFactor2020)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\CausativeFactor2020  $causativeFactor2020
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(CausativeFactor2020 $causativeFactor2020)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\CausativeFactor2020  $causativeFactor2020
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, CausativeFactor2020 $causativeFactor2020)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\CausativeFactor2020  $causativeFactor2020
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(CausativeFactor2020 $causativeFactor2020)
-    {
-        //
-    }
+}
 }

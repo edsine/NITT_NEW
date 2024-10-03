@@ -58,7 +58,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('factor') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -72,7 +72,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('factor14') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -86,7 +86,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('factor17') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -100,7 +100,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('factor19') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -116,7 +116,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('factor20') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
 
@@ -131,7 +131,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('factor21') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
 

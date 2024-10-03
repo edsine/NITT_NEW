@@ -58,7 +58,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('nnamdi') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -72,7 +72,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('akure') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -86,7 +86,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('benin') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -100,7 +100,7 @@
 <div class="icon">
 <i class=""></i>
 </div>
-<a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+<a href="{{ route('margeret') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
 </div>
 </div>
 
@@ -116,7 +116,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('akanu') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
 
@@ -131,7 +131,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('ibadan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
 
@@ -154,7 +154,7 @@
   <div class="icon">
   <i class=""></i>
   </div>
-  <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+  <a href="{{ route('ilorin') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
   </div>
   </div>
   
@@ -169,7 +169,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('yakubu') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     
@@ -183,7 +183,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('kaduna') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     
@@ -197,7 +197,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('sultan') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     
@@ -213,7 +213,7 @@
       <div class="icon">
       <i class=""></i>
       </div>
-      <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      <a href="{{ route('mallam') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
       </div>
     
@@ -228,7 +228,7 @@
       <div class="icon">
       <i class=""></i>
       </div>
-      <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      <a href="{{ route('maiduguri') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
       </div>
 
@@ -252,7 +252,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('makurdi') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     
@@ -266,7 +266,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('murtala') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     
@@ -280,7 +280,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('portharcourt') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     
@@ -294,7 +294,7 @@
     <div class="icon">
     <i class=""></i>
     </div>
-    <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+    <a href="{{ route('yola') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
     </div>
     </div>
     
@@ -310,7 +310,7 @@
       <div class="icon">
       <i class=""></i>
       </div>
-      <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      <a href="{{ route('minna') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
       </div>
     
@@ -325,15 +325,51 @@
       <div class="icon">
       <i class=""></i>
       </div>
-      <a href="" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      <a href="{{ route('katsina') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
       </div>
       </div>
+
 
 
       
-
     </div>
-    
+
+
+
+
+    <section class="content">
+      <div class="container-fluid">
+      
+      <div class="row">
+      <div class="col-lg-2 col-4">
+      
+      <div class="small-box bg-info">
+      <div class="inner">
+      <h3>{{ \App\Models\GrossDomesticProductBillion::count() }}</h3>
+      <p>Sam Mbakwe Airport</p>
+      </div>
+      <div class="icon">
+      <i class=""></i>
+      </div>
+      <a href="{{ route('samMbakwe') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+      </div>
+      
+      <div class="col-lg-2 col-4">
+      
+      <div class="small-box bg-success">
+      <div class="inner">
+      <h3>{{ \App\Models\GrossDomesticProductPercent::count() }}</h3>
+      <p>Osubi Airport</p>
+      </div>
+      <div class="icon">
+      <i class=""></i>
+      </div>
+      <a href="{{ route('osubi') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+      </div>
+      </div>
+      
+      
 
 
 

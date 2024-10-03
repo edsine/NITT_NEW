@@ -4,82 +4,65 @@ namespace App\Http\Controllers;
 
 use App\Models\MurtalaMuhammedAirport;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\MurtalaMuhammedAirportImport;
+use App\Exports\MurtalaMuhammedAirportExport;
 
 class MurtalaMuhammedAirportController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+    function murtala(){
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $murtalas = MurtalaMuhammedAirport::all();
+  
+        return view ('murtala', compact('murtalas'));
+        
+  
+        }
+        
+        
+        
+  
+  
+  public function store(Request $request)
+  {
+    MurtalaMuhammedAirport::create($request->all());
+      return redirect()->route('murtala');
+  }
+  
+  public function update(Request $request, $id)
+  {
+    $murtala = MurtalaMuhammedAirport::findOrFail($id);
+    $murtala->update($request->all());
+      return redirect()->route('murtala');
+  }
+  
+  public function destroy($id)
+  {
+    MurtalaMuhammedAirport::destroy($id);
+      return redirect()->route('murtala');
+  }
+  
+ 
+  
+  
+  
+  
+  public function import(Request $request)
+{
+    try {
+        Excel::import(new MurtalaMuhammedAirportImport, $request->file('file'));
+        return back()->with('success', ' imported successfully.');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error importing: ' . $e->getMessage());
     }
+}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+public function export()
+{
+    try {
+        return Excel::download(new MurtalaMuhammedAirportExport, 'file.csv');
+    } catch (\Exception $e) {
+        return back()->with('error', 'Error exporting file: ' . $e->getMessage());
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MurtalaMuhammedAirport  $murtalaMuhammedAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MurtalaMuhammedAirport $murtalaMuhammedAirport)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MurtalaMuhammedAirport  $murtalaMuhammedAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MurtalaMuhammedAirport $murtalaMuhammedAirport)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MurtalaMuhammedAirport  $murtalaMuhammedAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, MurtalaMuhammedAirport $murtalaMuhammedAirport)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MurtalaMuhammedAirport  $murtalaMuhammedAirport
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MurtalaMuhammedAirport $murtalaMuhammedAirport)
-    {
-        //
-    }
+}
 }
